@@ -9,7 +9,9 @@ Documentação da API
 No final do projeto você vai poder fornecer e receber feedback sobre as atividades desenvolvidas. Uma porção da nota dessa atividade irá depender do feedback dado pelos outros colegas do grupo. Provavelmente, o feedback será positivo se você:
 
 -Ter compromisso com o time e com a entrega das atividades;
+
 -Atualizar o time diariamente sobre suas atividades;
+
 -Comunicar qualquer contratempo com antecedência;
 -Participar em todas as atividades planejadas;
 -Comunicar seus pontos fortes / fracos no momento de decisões;
