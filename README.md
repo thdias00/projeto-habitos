@@ -1,80 +1,70 @@
-# Projeto-Habitos
+# Getting Started with Create React App
 
-# Entrega: Projeto Gestão de Hábitos
-Visão Geral
-Vocês trabalharão em equipes para desenvolver uma plataforma de gestão de hábitos. O objetivo da plataforma é que o usuário faça cadastro e consiga gerir seus hábitos, e participar de grupos com outras pessoas com a mesma categoria de hábitos e metas. Vocês terão uma API de backend que poderão usar para moldar o frontend da aplicação. A API incluirá endpoints relacionados a autenticação, hábitos, e aos grupos de pessoas, com suas respectivas atividades e metas .
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Documentação da API 
+## Available Scripts
 
-No final do projeto você vai poder fornecer e receber feedback sobre as atividades desenvolvidas. Uma porção da nota dessa atividade irá depender do feedback dado pelos outros colegas do grupo. Provavelmente, o feedback será positivo se você:
+In the project directory, you can run:
 
--Ter compromisso com o time e com a entrega das atividades;
+### `yarn start`
 
--Atualizar o time diariamente sobre suas atividades;
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
--Comunicar qualquer contratempo com antecedência;
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
--Participar em todas as atividades planejadas;
+### `yarn test`
 
--Comunicar seus pontos fortes / fracos no momento de decisões;
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
--Falar sobre suas preocupações e dúvidas e pedir esclarecimentos;
+### `yarn build`
 
--Não deixar a equipe cometer erros, mas discutir se for necessário sacrificar alguma parte;
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
--Convidar colegas a compartilharem suas ideias;
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
--Saber ouvir as preocupações dos colegas;
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
--Aceitar decisões do grupo, mesmo que isso leve o projeto para uma direção inesperada;
+### `yarn eject`
 
--Procurar ajuda caso fique travado;
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
--Dar feedbacks positivos quando for feito um bom trabalho;
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
--Pedir desculpa quando fizer algo errado;
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
--Em caso de erros ou contratempos, reunir a equipe para procurar uma solução em conjunto.
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
--Vocês também seguirão o processo Scrum e, apesar de cada um ser um desenvolvedor e colaborador individual, sua equipe deve considerar ter os papéis de Dono do Produto (Product Owner), Mestre de Scrum (Scrum Master), Líder Técnico (Teach Leader) e Assegurador de Qualidade (Quality Assurance).
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-# Objetivos de aprendizado
+To learn React, check out the [React documentation](https://reactjs.org/).
 
--Praticar a construção de aplicações a nível de mercado com React
+### Code Splitting
 
--Praticar a estruturação e a arquitetura em sistemas front-end.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
--Praticar a leitura e a compreensão de uma API de backend
+### Analyzing the Bundle Size
 
--Praticar o uso de bibliotecas de componentes
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
--Praticar os processos Scrum e suas cerimônias
+### Making a Progressive Web App
 
--Praticar a comunicação e o trabalho em equipe
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
+### Advanced Configuration
 
-# Início
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
--Faça um levantamento das principais features/funcionalidades de sua aplicação;
+### Deployment
 
--Quebre as funcionalidades em atividades menores para que possamos ter um acompanhamento melhor de seu progresso;
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
--Planeje, com seu grupo, os prazos de entrega de cada funcionalidade. Valide a meta com a equipe de ensino;
+### `yarn build` fails to minify
 
--Crie o layout de sua aplicação e valide com a equipe de ensino. Obs I: Pode se utilizar de ferramentas de UI como o Figma, Adobe Xd, etc. Obs II - Pode-se basear  em layouts de grandes aplicações como Facebook, Twitter, etc.;
-
--Desmembre os elementos compostos em cada páginas em componentes;
-
--Discuta os endpoints de API que você encontrar, como vocês irão compartilhar seu state, e quais componentes precisarão acessar o store;
-
--Discuta e pesquise quais bibliotecas seriam necessárias para atender as funcionalidades de sua aplicação.
-
--Apresentação da aplicação
-
--Haverá uma cerimônia de apresentação/entrega da aplicação desenvolvida pelo grupo. Normalmente a pessoa que é designada a mostrar a aplicação é o PO, mas caso o membro não se sinta confortável em apresentar, essa responsabilidade pode ser transferida para outro;
-
--A aplicação deverá ser hospedada no Vercel;
-
--A apresentação é aberta para qualquer pessoa assistir.
-
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
