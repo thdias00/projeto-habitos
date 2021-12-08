@@ -1,6 +1,6 @@
-const Providers = ({ children }) => {
+/* const Providers = ({ children }) => {
     return (
         { children }
     )
 };
-export default Providers;
+export default Providers; */

@@ -1,11 +1,11 @@
 import { TextField } from "@mui/material";
 
-const Input = ({label, register, name, error, ...rest})=>{
-    return(
-        <TextField 
-        {...register(name)}
-        error={error}
-        {...rest}
+const Input = ({ label, register, name, error, ...rest }) => {
+    return (
+        <TextField
+            {...register(name)}
+            error={error}
+            {...rest}
         />
     )
 }
