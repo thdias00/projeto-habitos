@@ -1,10 +1,11 @@
 # Projeto-Habitos
 
 # Entrega: Projeto Gestão de Hábitos
+
 Visão Geral
 Vocês trabalharão em equipes para desenvolver uma plataforma de gestão de hábitos. O objetivo da plataforma é que o usuário faça cadastro e consiga gerir seus hábitos, e participar de grupos com outras pessoas com a mesma categoria de hábitos e metas. Vocês terão uma API de backend que poderão usar para moldar o frontend da aplicação. A API incluirá endpoints relacionados a autenticação, hábitos, e aos grupos de pessoas, com suas respectivas atividades e metas .
 
-Documentação da API 
+Documentação da API
 
 No final do projeto você vai poder fornecer e receber feedback sobre as atividades desenvolvidas. Uma porção da nota dessa atividade irá depender do feedback dado pelos outros colegas do grupo. Provavelmente, o feedback será positivo se você:
 
@@ -38,7 +39,6 @@ No final do projeto você vai poder fornecer e receber feedback sobre as ativida
 
 -Vocês também seguirão o processo Scrum e, apesar de cada um ser um desenvolvedor e colaborador individual, sua equipe deve considerar ter os papéis de Dono do Produto (Product Owner), Mestre de Scrum (Scrum Master), Líder Técnico (Teach Leader) e Assegurador de Qualidade (Quality Assurance).
 
-
 # Objetivos de aprendizado
 
 -Praticar a construção de aplicações a nível de mercado com React
@@ -53,7 +53,6 @@ No final do projeto você vai poder fornecer e receber feedback sobre as ativida
 
 -Praticar a comunicação e o trabalho em equipe
 
-
 # Início
 
 -Faça um levantamento das principais features/funcionalidades de sua aplicação;
@@ -62,7 +61,7 @@ No final do projeto você vai poder fornecer e receber feedback sobre as ativida
 
 -Planeje, com seu grupo, os prazos de entrega de cada funcionalidade. Valide a meta com a equipe de ensino;
 
--Crie o layout de sua aplicação e valide com a equipe de ensino. Obs I: Pode se utilizar de ferramentas de UI como o Figma, Adobe Xd, etc. Obs II - Pode-se basear  em layouts de grandes aplicações como Facebook, Twitter, etc.;
+-Crie o layout de sua aplicação e valide com a equipe de ensino. Obs I: Pode se utilizar de ferramentas de UI como o Figma, Adobe Xd, etc. Obs II - Pode-se basear em layouts de grandes aplicações como Facebook, Twitter, etc.;
 
 -Desmembre os elementos compostos em cada páginas em componentes;
 
@@ -77,4 +76,3 @@ No final do projeto você vai poder fornecer e receber feedback sobre as ativida
 -A aplicação deverá ser hospedada no Vercel;
 
 -A apresentação é aberta para qualquer pessoa assistir.
-
