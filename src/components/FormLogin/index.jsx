@@ -31,7 +31,7 @@ const FormLogin = () => {
   })
 
   const { login } = useAuth();
-  
+
   const history = useHistory();
 
   const onSubmitFunction = (data) => {
@@ -44,8 +44,8 @@ const FormLogin = () => {
       <div className='upper-title'>
         <span><span className='highlight'>Entrar</span> na sua conta</span>
       </div>
-    <form onSubmit={handleSubmit(onSubmitFunction)}>
-      <Box
+      <form onSubmit={handleSubmit(onSubmitFunction)}>
+        <Box
           sx={{
             width: '260px',
             display: 'flex',
@@ -57,14 +57,14 @@ const FormLogin = () => {
             sx={{
               margin: '1rem 0',
               width: '100%',
-          }}
-              variant="standard"
-              type="text"
-              label="User Name"
-              error={!!errors.username}
-              helperText={errors.username?.message}
-              {...register("username")}
-            />
+            }}
+            variant="standard"
+            type="text"
+            label="User Name"
+            error={!!errors.username}
+            helperText={errors.username?.message}
+            {...register("username")}
+          />
           <TextField
             sx={{
               margin: '1rem 0',
@@ -82,7 +82,7 @@ const FormLogin = () => {
         <ComponentButton variant='contained' sx={{ width: '50px' }} type='submit'>Login</ComponentButton>
       </Box>
       </form>
-      
+
     </FormLoginContainer>
   </>)
 }
