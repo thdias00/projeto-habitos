@@ -1,22 +1,15 @@
 import styled from 'styled-components';
-// import LoginSide from "../../assets/login.png";
+import LoginSide from "../../assets/decision_making2.png";
 
 export const LoginPageContainer = styled.div`
   height: 100vh;
 `;
 
 export const Background = styled.div`
-  background-color: #458E82;
+  background-color: var(--green);
   width: 100vw;
-  /* max-width: 100%; */
   height: 100vh;
   overflow: hidden;
-  /* max-height: 100%; */
-
-  /* margin: 0;
-  padding: 0;
-  box-sizing: border-box; */
-
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,28 +19,27 @@ export const MainContainer = styled.div`
   border-radius: 8px;
   width: 93%;
   height: 97%;
-
   display: flex;
   justify-content: center;
   @media (min-width: 768px) {
-    width: 700px;
-    height: 400px;
+    width: 750px;
+    height: 500px;
   }
 `;
-export const SideLeft = styled.div`
+export const SideForm = styled.div`
   height: 100%;
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
-export const SideRight = styled.div`
+export const SideImage = styled.div`
   display: none;
   @media (min-width: 768px) {
     width: 50%;
-    /* height: 100vh; */
     display: block;
-    background: url("https://picsum.photos/400") no-repeat center;
+    background: url(${LoginSide}) no-repeat center;
+    background-size: cover;
     border-radius: 0 8px 8px 0;
   }
 `;
