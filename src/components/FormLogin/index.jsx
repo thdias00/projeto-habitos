@@ -7,7 +7,7 @@ import TextField from '@mui/material/TextField';
 import ComponentButton from "../Button";
 import { useAuth } from "../../providers/auth";
 import Box from '@mui/material/Box';
-import { Button } from "@mui/material";
+import LogoName from '../LogoName';
 
 const FormLogin = () => {
   const formSchema = yup.object().shape({
@@ -40,6 +40,7 @@ const FormLogin = () => {
 
   return (<>
     <FormLoginContainer>
+      <LogoName welcome/>
       <div className='upper-title'>
         <span><span className='highlight'>Entrar</span> na sua conta</span>
       </div>
@@ -76,9 +77,9 @@ const FormLogin = () => {
               helperText={errors.password?.message}
               {...register("password")}
             />
-          <LinkContainer className='highlight' to='/register'>Esqueceu a senha?</LinkContainer>
-          <div className='links'>Não tens conta? <LinkContainer to='/register' className='highlight'>Crie aqui</LinkContainer></div>
-        <ComponentButton sx={{ width: '50px' }} type='submit'>Login</ComponentButton>
+          <LinkContainer className='highlight' to='/signup'>Esqueceu a senha?</LinkContainer>
+          <div className='links'>Não tens conta? <LinkContainer to='/signup' className='highlight'>Crie aqui</LinkContainer></div>
+        <ComponentButton variant='contained' sx={{ width: '50px' }} type='submit'>Login</ComponentButton>
       </Box>
       </form>
       

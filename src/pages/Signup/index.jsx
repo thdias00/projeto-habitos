@@ -1,8 +1,19 @@
+import FormRegister from "../../components/FormRegister";
+import { SignupContainer, Background, MainContainer, SideForm, SideImage } from "./style";
+
 const Signup = () => {
-    return (
-        <div>
-            Signup
-        </div>
-    )
+  return (
+    <SignupContainer>
+      <Background>
+        <MainContainer>
+          <SideImage/>
+          <SideForm>
+            <FormRegister/>
+          </SideForm>
+        </MainContainer>
+      </Background>
+    </SignupContainer>
+  )
 }
-export default Signup;
+
+export default Signup

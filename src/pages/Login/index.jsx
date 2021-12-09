@@ -1,15 +1,15 @@
 import FormLogin from "../../components/FormLogin";
-import { LoginPageContainer, Background, MainContainer, SideLeft, SideRight } from "./style";
+import { LoginPageContainer, Background, MainContainer, SideForm, SideImage } from "./style";
 
 const LoginPage = () => {
   return (
     <LoginPageContainer>
       <Background>
         <MainContainer>
-          <SideLeft>
+          <SideForm>
             <FormLogin/>
-          </SideLeft>
-          <SideRight/>
+          </SideForm>
+          <SideImage/>
         </MainContainer>
       </Background>
       

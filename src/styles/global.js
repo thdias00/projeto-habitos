@@ -12,4 +12,12 @@ export default createGlobalStyle`
     --black: #0C0D0D;
     --green: #458E82;
   }
+
+  body {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: var(--black);
+    background-color: var(--white);
+    overflow-x: hidden;
+  }
 `;
