@@ -7,7 +7,6 @@ import TextField from '@mui/material/TextField';
 import ComponentButton from "../Button";
 import { useAuth } from "../../providers/auth";
 import Box from '@mui/material/Box';
-import { Button } from "@mui/material";
 
 const FormLogin = () => {
   const formSchema = yup.object().shape({
@@ -31,7 +30,7 @@ const FormLogin = () => {
   })
 
   const { login } = useAuth();
-  
+
   const history = useHistory();
 
   const onSubmitFunction = (data) => {
@@ -43,8 +42,8 @@ const FormLogin = () => {
       <div className='upper-title'>
         <span><span className='highlight'>Entrar</span> na sua conta</span>
       </div>
-    <form onSubmit={handleSubmit(onSubmitFunction)}>
-      <Box
+      <form onSubmit={handleSubmit(onSubmitFunction)}>
+        <Box
           sx={{
             width: '260px',
             display: 'flex',
@@ -56,32 +55,32 @@ const FormLogin = () => {
             sx={{
               margin: '1rem 0',
               width: '100%',
-          }}
-              variant="standard"
-              type="text"
-              label="User Name"
-              error={!!errors.username}
-              helperText={errors.username?.message}
-              {...register("username")}
-            />
+            }}
+            variant="standard"
+            type="text"
+            label="User Name"
+            error={!!errors.username}
+            helperText={errors.username?.message}
+            {...register("username")}
+          />
           <TextField
             sx={{
               margin: '1rem 0',
               width: '100%',
-          }}
-              variant="standard"
-              type="password"
-              label="Password"
-              error={!!errors.password}
-              helperText={errors.password?.message}
-              {...register("password")}
-            />
+            }}
+            variant="standard"
+            type="password"
+            label="Password"
+            error={!!errors.password}
+            helperText={errors.password?.message}
+            {...register("password")}
+          />
           <LinkContainer className='highlight' to='/register'>Esqueceu a senha?</LinkContainer>
           <div className='links'>Não tens conta? <LinkContainer to='/register' className='highlight'>Crie aqui</LinkContainer></div>
-        <ComponentButton sx={{ width: '50px' }} type='submit'>Login</ComponentButton>
-      </Box>
+          <ComponentButton sx={{ width: '50px' }} type='submit'>Login</ComponentButton>
+        </Box>
       </form>
-      
+
     </FormLoginContainer>
   </>)
 }
