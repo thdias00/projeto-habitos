@@ -1,9 +1,12 @@
 import { AuthProvider } from "./auth";
+import { HabitsProvider } from "./habits";
 
 const Providers = ({ children }) => {
   return (
     <AuthProvider>
-      {children}
+      <HabitsProvider>
+        {children}
+      </HabitsProvider>
     </AuthProvider>
   )
 }
