@@ -3,7 +3,6 @@ import { useAuth } from "../providers/auth";
 
 const Route = ({ isPrivate = false, component: Component, ...rest }) => {
   const { token } = useAuth();
-  console.log("token: ", token);
 
   return (
     <ReactDOMRoute

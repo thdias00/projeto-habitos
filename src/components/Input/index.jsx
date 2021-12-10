@@ -6,6 +6,7 @@ const Input = ({ label, register, name, error, ...rest }) => {
             {...register(name)}
             error={error}
             {...rest}
+            sx={{ margin: "10px 0px" }}
         />
     )
 }

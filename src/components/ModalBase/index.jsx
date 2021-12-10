@@ -14,7 +14,7 @@ const style = {
   maxHeight: '85%',
   overflowY: 'auto',
   overflowX: 'hidden',
-  // width: 400,
+  textAlign: "center",
   bgcolor: 'var(--green)',
   border: '2px solid white',
   borderRadius: '8px',

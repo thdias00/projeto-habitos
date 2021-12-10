@@ -41,21 +41,22 @@ export const AuthProvider = ({ children }) => {
         console.log(err);
       })
   }
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("@happyhabits:user")) || {});
+
   const updateUser = (userData) => {
-    const user = JSON.parse(localStorage.getItem("@kenziehub:user")) || {};
-    const token = localStorage.getItem("@kenziehub:token") || '';
-    api.patch(`/users/${user.id}`, userData, {
+    const token = localStorage.getItem("@happyhabits:token") || '';
+    api.patch(`/users/${user.id}/`, userData, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
       .then(response => {
-        toast.success('Success!')
-        console.log(response);
+        toast.success('Usuário atualizado')
+        localStorage.setItem("@happyhabits:user", JSON.stringify(response.data));
+        setUser(JSON.parse(localStorage.getItem("@happyhabits:user")) || {})
       })
       .catch(err => {
-        toast.error('Error!')
-        console.log(err)
+        toast.error('Nome de usuário já existente')
       })
   }
   const logout = () => {
@@ -66,7 +67,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{login, updateUser, logout, user: data.user, token: data.token}}>
+    <AuthContext.Provider value={{ login, updateUser, logout, user, token: data.token }}>
       {children}
     </AuthContext.Provider>
   )
