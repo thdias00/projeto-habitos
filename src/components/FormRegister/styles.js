@@ -20,6 +20,7 @@ export const FormRegisterContainer = styled.div`
     font-size: 12px;
     font-weight: bold;
     color: var(--green);
+    margin-top: 0.4rem;
   }
   span, .highlight {
     color: var(--green);
