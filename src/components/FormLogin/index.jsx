@@ -3,10 +3,9 @@ import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from "react-router-dom";
-import TextField from '@mui/material/TextField';
+import { TextField, Box } from '@mui/material';
 import ComponentButton from "../Button";
 import { useAuth } from "../../providers/auth";
-import Box from '@mui/material/Box';
 import LogoName from '../LogoName';
 
 const FormLogin = () => {
@@ -40,7 +39,7 @@ const FormLogin = () => {
 
   return (<>
     <FormLoginContainer>
-      <LogoName welcome/>
+      <LogoName welcome />
       <div className='upper-title'>
         <span><span className='highlight'>Entrar</span> na sua conta</span>
       </div>
@@ -69,18 +68,18 @@ const FormLogin = () => {
             sx={{
               margin: '1rem 0',
               width: '100%',
-          }}
-              variant="standard"
-              type="password"
-              label="Password"
-              error={!!errors.password}
-              helperText={errors.password?.message}
-              {...register("password")}
-            />
+            }}
+            variant="standard"
+            type="password"
+            label="Password"
+            error={!!errors.password}
+            helperText={errors.password?.message}
+            {...register("password")}
+          />
           <LinkContainer className='highlight' to='/signup'>Esqueceu a senha?</LinkContainer>
           <div className='links'>Não tens conta? <LinkContainer to='/signup' className='highlight'>Crie aqui</LinkContainer></div>
-        <ComponentButton variant='contained' sx={{ width: '50px' }} type='submit'>Login</ComponentButton>
-      </Box>
+          <ComponentButton variant='contained' sx={{ width: '50px' }} type='submit'>Login</ComponentButton>
+        </Box>
       </form>
 
     </FormLoginContainer>

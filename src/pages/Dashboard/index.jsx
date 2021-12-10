@@ -1,5 +1,3 @@
-
-import ComponentButton from "../../components/Button";
 import ModalBase from "../../components/ModalBase";
 import ResponsiveAppBar from "../../components/Header";
 
