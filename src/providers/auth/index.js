@@ -1,7 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 
 export const AuthContext = createContext();
 
@@ -18,59 +18,97 @@ export const AuthProvider = ({ children }) => {
   });
 
   const login = (userData, history) => {
-    api.post('/sessions/', userData)
-      .then(response => {
-        toast.success('Success!');
+    api
+      .post("/sessions/", userData)
+      .then((response) => {
+        toast.success("Success!");
         const userId = jwt_decode(response.data.access).user_id;
         const { access } = response.data;
         localStorage.setItem("@happyhabits:token", access);
-        api.get(`/users/${userId}/`)
-          .then(response => {
+        api
+          .get(`/users/${userId}/`)
+          .then((response) => {
             const user = response.data;
             localStorage.setItem("@happyhabits:user", JSON.stringify(user));
             setData({ token: access, user });
           })
-          .catch(err => {
-            toast.error('Error retrieving user detaisl!')
+          .catch((err) => {
+            toast.error("Error retrieving user detaisl!");
             console.log(err);
           });
-        history.push('/dashboard');
+        history.push("/dashboard");
       })
-      .catch(err => {
-        toast.error('Error during login!')
+      .catch((err) => {
+        toast.error("Error during login!");
         console.log(err);
-      })
-  }
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("@happyhabits:user")) || {});
+      });
+  };
+  const [user, setUser] = useState(
+    JSON.parse(localStorage.getItem("@happyhabits:user")) || {}
+  );
 
   const updateUser = (userData) => {
-    const token = localStorage.getItem("@happyhabits:token") || '';
-    api.patch(`/users/${user.id}/`, userData, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(response => {
-        toast.success('Usuário atualizado')
-        localStorage.setItem("@happyhabits:user", JSON.stringify(response.data));
-        setUser(JSON.parse(localStorage.getItem("@happyhabits:user")) || {})
+    const token = localStorage.getItem("@happyhabits:token") || "";
+    api
+      .patch(`/users/${user.id}/`, userData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
-      .catch(err => {
-        toast.error('Nome de usuário já existente')
+      .then((response) => {
+        toast.success("Usuário atualizado");
+        localStorage.setItem(
+          "@happyhabits:user",
+          JSON.stringify(response.data)
+        );
+        setUser(JSON.parse(localStorage.getItem("@happyhabits:user")) || {});
       })
-  }
+      .catch((err) => {
+        toast.error("Nome de usuário já existente");
+      });
+  };
   const logout = () => {
     localStorage.removeItem("@happyhabits:token");
     localStorage.removeItem("@happyhabits:user");
 
     setData({});
-  }
+  };
+
+  const [groups, setGroups] = useState([]);
+  const [page, setPage] = useState(1);
+
+  const nextGroupPage = () => {
+    setPage(page + 1);
+  };
+  const backGroupPage = () => {
+    setPage(page - 1);
+  };
+
+  useEffect(() => {
+    api
+      .get(`/groups/?page=${page}`)
+      .then((response) => {
+        setGroups(response.data.results);
+      })
+      .catch((error) => console.log(error));
+  }, [page]);
 
   return (
-    <AuthContext.Provider value={{ login, updateUser, logout, user, token: data.token }}>
+    <AuthContext.Provider
+      value={{
+        login,
+        updateUser,
+        logout,
+        user,
+        token: data.token,
+        groups,
+        nextGroupPage,
+        backGroupPage,
+      }}
+    >
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
 export const useAuth = () => useContext(AuthContext);
