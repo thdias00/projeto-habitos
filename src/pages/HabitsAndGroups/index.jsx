@@ -1,10 +1,13 @@
 import { Grid, Box, Typography } from "@mui/material";
+import CardGroup from "../../components/CardGroup";
 import ResponsiveAppBar from "../../components/Header";
 import HabitsComponent from "../../components/HabitsComponent";
 import Grid6 from "../../components/Grids/Grid6";
+import { useGroups } from "../../providers/groups";
 
 
 const HabitsAndGroups = () => {
+  const { nextGroupPage, backGroupPage, groups } = useGroups();
   return (
     <>
       <ResponsiveAppBar />
@@ -44,11 +47,15 @@ const HabitsAndGroups = () => {
               variant="h5">
               Todos os Grupos
             </Typography>
-            <h5>colocar o componente de grupos</h5>
+              <button onClick={nextGroupPage}>next</button>
+              <button onClick={backGroupPage}>back</button>
+              {groups.map((item) => (
+                <CardGroup key={item.id} name={item.name} description={item.description} />
+              ))}
           </Box>
         </Grid6>
       </Grid>
     </>
-  )
-}
+  );
+};
 export default HabitsAndGroups;
