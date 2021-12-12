@@ -1,8 +1,7 @@
 import Grid from "@mui/material/Grid";
 
 function Grid12({ children }) {
-  return;
-  <Grid xs={12} sm={12} md={12} lg={12} xl={12}>
+  return <Grid xs={12} sm={12} md={12} lg={12} xl={12}>
     {children}
   </Grid>;
 }

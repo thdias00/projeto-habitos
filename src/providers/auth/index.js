@@ -17,10 +17,21 @@ export const AuthProvider = ({ children }) => {
     return {};
   });
 
+  const signup = (userData, history, reset) => {
+    api.post('/users/', userData)
+      .then(response => {
+        toast.success('Success signing up');
+        reset();
+        history.push('/login');
+      })
+      .catch(err => {
+        toast.error('Error signing up');
+      })
+  }
+
   const login = (userData, history) => {
     api.post('/sessions/', userData)
       .then(response => {
-        toast.success('Success!');
         const userId = jwt_decode(response.data.access).user_id;
         const { access } = response.data;
         localStorage.setItem("@happyhabits:token", access);
@@ -31,13 +42,13 @@ export const AuthProvider = ({ children }) => {
             setData({ token: access, user });
           })
           .catch(err => {
-            toast.error('Error retrieving user detaisl!')
+            toast.error('Error retrieving user details!');
             console.log(err);
           });
         history.push('/dashboard');
       })
       .catch(err => {
-        toast.error('Error during login!')
+        toast.error('Error during login!');
         console.log(err);
       })
   }
@@ -51,12 +62,12 @@ export const AuthProvider = ({ children }) => {
       }
     })
       .then(response => {
-        toast.success('Usuário atualizado')
+        toast.success('Usuário atualizado');
         localStorage.setItem("@happyhabits:user", JSON.stringify(response.data));
         setUser(JSON.parse(localStorage.getItem("@happyhabits:user")) || {})
       })
       .catch(err => {
-        toast.error('Nome de usuário já existente')
+        toast.error('Nome de usuário já existente');
       })
   }
   const logout = () => {
@@ -67,7 +78,7 @@ export const AuthProvider = ({ children }) => {
   }
 
   return (
-    <AuthContext.Provider value={{ login, updateUser, logout, user, token: data.token }}>
+    <AuthContext.Provider value={{ signup, login, updateUser, logout, user, token: data.token }}>
       {children}
     </AuthContext.Provider>
   )

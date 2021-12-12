@@ -15,7 +15,7 @@ const style = {
   overflowY: 'auto',
   overflowX: 'hidden',
   textAlign: "center",
-  bgcolor: 'var(--green)',
+  bgcolor: '#9CCC65',
   border: '2px solid white',
   borderRadius: '8px',
   boxShadow: 24,
@@ -41,10 +41,6 @@ export default function ModalBase({ labelToCallModal, titleModal, children }) {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             {titleModal}
           </Typography>
-          {/* {children} */}
-          {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {children}
-          </Typography> */}
           <Box>
             {children}
           </Box>

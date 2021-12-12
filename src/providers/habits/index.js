@@ -1,48 +1,33 @@
 import { createContext, useContext, useState, useEffect } from "react";
 import api from "../../services/api";
 import toast from 'react-hot-toast';
+import { useAuth } from "../auth";
 export const HabitsContext = createContext();
 
 export const HabitsProvider = ({ children }) => {
+  const { token } = useAuth();
   const [habits, setHabits] = useState([]);
-
-  useEffect(() => {
-    const token = localStorage.getItem("@happyhabits:token") || '';
-    api.get('/habits/personal/', {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(response => {
-        console.log('response from HabitsProvider: ', response.data);
-        setHabits(response.data);
-        toast.success('Success!');
-      })
-      .catch(err => {
-        toast.error('Error!');
-        setHabits([]);
-        console.log(err);
-      })
-  }, [])
 
   const getHabits = () => {
     const token = localStorage.getItem("@happyhabits:token") || '';
+    token !== '' &&
     api.get('/habits/personal/', {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
       .then(response => {
-        console.log('response from HabitsProvider: ', response.data);
         setHabits(response.data);
-        toast.success('Success!');
       })
       .catch(err => {
-        toast.error('Error!');
         setHabits([]);
         console.log(err);
       })
   }
+  
+  useEffect(() => {
+    getHabits();
+  }, [token])
 
   const habitCreate = (obj) => {
     const {id} = JSON.parse(localStorage.getItem("@happyhabits:user")) || {};
@@ -54,10 +39,10 @@ export const HabitsProvider = ({ children }) => {
     })
       .then(response => {
         getHabits();
-        toast.success('Success!');
+        toast.success('Success habit created!');
       })
       .catch(err => {
-        toast.error('Error!')
+        toast.error('Error during habit creation!')
         console.log(err);
       })
   }
@@ -72,11 +57,11 @@ export const HabitsProvider = ({ children }) => {
     })
       .then(response => {
         getHabits();
-        toast.success('Success!')
+        toast.success('Success updated!')
         console.log(response);
       })
       .catch(err => {
-        toast.error('Error!')
+        toast.error('Error during update!')
         console.log(err)
       })
   }
@@ -89,11 +74,11 @@ export const HabitsProvider = ({ children }) => {
     })
       .then(response => {
         getHabits();
-        toast.success('Success!')
+        toast.success('Success deleted!')
         console.log(response);
       })
       .catch(err => {
-        toast.error('Error!')
+        toast.error('Error during exclusion!')
         console.log(err)
       })
   }
