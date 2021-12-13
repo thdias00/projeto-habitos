@@ -51,8 +51,6 @@ const HabitsAndGroups = () => {
             >
               Todos os Grupos
             </Typography>
-            <button onClick={nextGroupPage}>next</button>
-            <button onClick={backGroupPage}>back</button>
             <DivGroups>
               {groups.map((item) => (
                 <CardGroup
@@ -62,6 +60,8 @@ const HabitsAndGroups = () => {
                   id={item.id}
                 />
               ))}
+              <button onClick={nextGroupPage}>next</button>
+              <button onClick={backGroupPage}>back</button>
             </DivGroups>
           </Box>
         </Grid6>
