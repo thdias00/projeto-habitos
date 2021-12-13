@@ -4,7 +4,6 @@ import { useGroups } from "../../providers/groups";
 
 export const CardGroupButton = ({ id }) => {
   const { groups } = useGroups();
-  console.log(groups);
   return (
     <Button variant="contained" disableElevation>
       sub
