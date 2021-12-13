@@ -2,13 +2,12 @@
 import * as yup from 'yup';
 import { useForm} from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Link } from "react-router-dom";
-import api from "../../services/api";
 import ComponentButton from '../Button';
-import TextField from '@mui/material/TextField';
-import toast from 'react-hot-toast';
 import { FormRegisterContainer, LinkContainer } from './styles';
 import LogoName from '../LogoName';
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../../providers/auth';
+import Input from '../Input';
 
 const FormRegister = () => {
   const formSchema = yup.object().shape({
@@ -34,16 +33,13 @@ const FormRegister = () => {
     resolver: yupResolver(formSchema),
   });
 
+  const { signup } = useAuth();
+
+  const history = useHistory();
+
   const onSubmitFunction = (data) => {
     delete data.password_conf;
-    api.post('/users/', data)
-      .then(response => {
-        toast.success('Success');
-        reset();
-      })
-      .catch(err => {
-        toast.error('Error');
-      })
+    signup(data, history, reset);
   }
 
   return (<>
@@ -51,44 +47,49 @@ const FormRegister = () => {
       <LogoName welcome />
       <div className='subtitle'>Preenche todo o formulário</div>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
-        <TextField
+        <Input
+          color="success" 
           variant="standard"
           type="text"
-          label="UserName"
+          label="Usuário"
           error={!!errors.username}
           helperText={errors.username?.message}
-          {...register("username")}
-          size="small"
+          name="username"
+          register={register}
         />
-        <TextField
+        <Input
+          color="success" 
           variant="standard"
           type="email"
-          label="E-mail"
+          label="Email"
           error={!!errors.email}
           helperText={errors.email?.message}
-          {...register("email")}
-          size="small"
+          name="email"
+          register={register}
         />
-        <TextField
+        <Input
+          color="success" 
           variant="standard"
           type="password"
-          label="Password"
+          label="Senha"
           error={!!errors.password}
           helperText={errors.password?.message}
-          {...register("password")}
-          size="small"
+          name="password"
+          register={register}
         />
-        <TextField
+        <Input
+          color="success" 
           variant="standard"
           type="password"
-          label="Confirm Password"
+          label="Confirmar senha"
           error={!!errors.password_conf}
           helperText={errors.password_conf?.message}
-          {...register("password_conf")}
-          size="small"
+          name="password_conf"
+          register={register}
         />
         <div className='links'>Já se cadastrou? <LinkContainer to='/login' className='highlight'>Faça o login</LinkContainer></div>
         <ComponentButton 
+          color="success"
           variant='contained'
         type='submit'>
         Signup</ComponentButton>

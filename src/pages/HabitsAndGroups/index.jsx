@@ -1,28 +1,59 @@
+import { Grid, Box, Typography } from "@mui/material";
 import CardGroup from "../../components/CardGroup";
-import { useAuth } from "../../providers/auth";
-import { Grid } from "@mui/material";
 import ResponsiveAppBar from "../../components/Header";
 import HabitsComponent from "../../components/HabitsComponent";
+import Grid6 from "../../components/Grids/Grid6";
+import { useGroups } from "../../providers/groups";
+
 
 const HabitsAndGroups = () => {
-  const { nextGroupPage, backGroupPage, groups } = useAuth();
+  const { nextGroupPage, backGroupPage, groups } = useGroups();
   return (
     <>
       <ResponsiveAppBar />
       <Grid container spacing={2}>
-        <Grid item xs={6}>
-          <HabitsComponent />
-        </Grid>
-        <Grid item xs={6}>
-          <div>
-            groups
-            <button onClick={nextGroupPage}>next</button>
-            <button onClick={backGroupPage}>back</button>
-            {groups.map((item) => (
-              <CardGroup name={item.name} description={item.description} />
-            ))}
-          </div>
-        </Grid>
+        <Grid6 >
+          <Box
+            sx={{
+              padding: '1rem',
+              margin: '2rem',
+              height: '90vh',
+              backgroundColor: '#1B5E20',
+            }}>
+            <Typography
+              color="white"
+              padding="1rem 0 .6rem 0"
+              align="center"
+              component="h1"
+              variant="h5">
+              Meus Hábitos
+            </Typography>
+            <HabitsComponent/>
+          </Box>
+        </Grid6>
+        <Grid6 >
+          <Box
+            sx={{
+              padding: '1rem',
+              margin: '2rem',
+              height: '90vh',
+              backgroundColor: '#47824A',
+            }}>
+            <Typography
+              color="white"
+              padding="1rem 0 .6rem 0"
+              align="center"
+              component="h1"
+              variant="h5">
+              Todos os Grupos
+            </Typography>
+              <button onClick={nextGroupPage}>next</button>
+              <button onClick={backGroupPage}>back</button>
+              {groups.map((item) => (
+                <CardGroup key={item.id} name={item.name} description={item.description} />
+              ))}
+          </Box>
+        </Grid6>
       </Grid>
     </>
   );

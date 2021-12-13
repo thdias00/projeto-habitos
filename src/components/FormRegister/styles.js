@@ -2,7 +2,6 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const FormRegisterContainer = styled.div`
-  background-color: #FFFFFF;
   border: 2px solid var(--gray-0);
   border-radius: 5px;
   width: 310px;
@@ -19,11 +18,11 @@ export const FormRegisterContainer = styled.div`
   .subtitle {
     font-size: 12px;
     font-weight: bold;
-    color: var(--green);
+    color: #3A7D33;
     margin-top: 0.4rem;
   }
   span, .highlight {
-    color: var(--green);
+    color: #3A7D33;
     font-size: 12px;
     text-align: center;
     margin: auto;

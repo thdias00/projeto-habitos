@@ -17,11 +17,21 @@ export const AuthProvider = ({ children }) => {
     return {};
   });
 
+  const signup = (userData, history, reset) => {
+    api.post('/users/', userData)
+      .then(response => {
+        toast.success('Success signing up');
+        reset();
+        history.push('/login');
+      })
+      .catch(err => {
+        toast.error('Error signing up');
+      })
+  }
+
   const login = (userData, history) => {
-    api
-      .post("/sessions/", userData)
-      .then((response) => {
-        toast.success("Success!");
+    api.post('/sessions/', userData)
+      .then(response => {
         const userId = jwt_decode(response.data.access).user_id;
         const { access } = response.data;
         localStorage.setItem("@happyhabits:token", access);
@@ -32,14 +42,14 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem("@happyhabits:user", JSON.stringify(user));
             setData({ token: access, user });
           })
-          .catch((err) => {
-            toast.error("Error retrieving user detaisl!");
+          .catch(err => {
+            toast.error('Error retrieving user details!');
             console.log(err);
           });
         history.push("/dashboard");
       })
-      .catch((err) => {
-        toast.error("Error during login!");
+      .catch(err => {
+        toast.error('Error during login!');
         console.log(err);
       });
   };
@@ -48,20 +58,19 @@ export const AuthProvider = ({ children }) => {
   );
 
   const updateUser = (userData) => {
-    const token = localStorage.getItem("@happyhabits:token") || "";
-    api
-      .patch(`/users/${user.id}/`, userData, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+    const token = localStorage.getItem("@happyhabits:token") || '';
+    api.patch(`/users/${user.id}/`, userData, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(response => {
+        toast.success('Usuário atualizado');
+        localStorage.setItem("@happyhabits:user", JSON.stringify(response.data));
+        setUser(JSON.parse(localStorage.getItem("@happyhabits:user")) || {})
       })
-      .then((response) => {
-        toast.success("Usuário atualizado");
-        localStorage.setItem(
-          "@happyhabits:user",
-          JSON.stringify(response.data)
-        );
-        setUser(JSON.parse(localStorage.getItem("@happyhabits:user")) || {});
+      .catch(err => {
+        toast.error('Nome de usuário já existente');
       })
       .catch((err) => {
         toast.error("Nome de usuário já existente");
@@ -96,6 +105,7 @@ export const AuthProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        signup, 
         login,
         updateUser,
         logout,

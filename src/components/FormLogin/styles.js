@@ -10,7 +10,7 @@ export const FormLoginContainer = styled.div`
     margin: 1rem 0;
   }
   span, .highlight {
-    color: #458E82;
+    color: #3A7D33;
     font-size: 12px;
     text-align: center;
     margin: auto;

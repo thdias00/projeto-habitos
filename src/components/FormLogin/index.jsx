@@ -3,10 +3,11 @@ import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useHistory } from "react-router-dom";
-import { TextField, Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import ComponentButton from "../Button";
 import { useAuth } from "../../providers/auth";
 import LogoName from '../LogoName';
+import Input from '../Input';
 
 const FormLogin = () => {
   const formSchema = yup.object().shape({
@@ -52,33 +53,55 @@ const FormLogin = () => {
             alignItems: 'center',
             margin: '1rem'
           }}>
-          <TextField
+          <Stack
             sx={{
-              margin: '1rem 0',
+              flexDirection: 'row',
+              justifyContent: "center",
+              margin: '.8rem 0',
               width: '100%',
-            }}
-            variant="standard"
-            type="text"
-            label="User Name"
-            error={!!errors.username}
-            helperText={errors.username?.message}
-            {...register("username")}
-          />
-          <TextField
+                }}>
+            <Input
+              color="success" 
+              sx={{
+                margin: '1rem 0',
+                width: '100%',
+              }}
+              variant="standard"
+              type="text"
+              label="Usuário"
+              error={!!errors.username}
+              helperText={errors.username?.message}
+              name="username"
+              register={register}
+              margin="normal"
+            />
+          </Stack>
+          <Stack
             sx={{
-              margin: '1rem 0',
+              flexDirection: 'row',
+              justifyContent: "center",
+              margin: '.8rem 0',
               width: '100%',
-            }}
-            variant="standard"
-            type="password"
-            label="Password"
-            error={!!errors.password}
-            helperText={errors.password?.message}
-            {...register("password")}
-          />
+                }}>
+            <Input
+              color="success" 
+              sx={{
+                margin: '1rem 0',
+                width: '100%',
+              }}
+              variant="standard"
+              type="password"
+              label="Senha"
+              error={!!errors.password}
+              helperText={errors.password?.message}
+              name="password"
+              register={register}
+              margin="normal"
+            />
+          </Stack>
           <LinkContainer className='highlight' to='/signup'>Esqueceu a senha?</LinkContainer>
           <div className='links'>Não tens conta? <LinkContainer to='/signup' className='highlight'>Crie aqui</LinkContainer></div>
-          <ComponentButton variant='contained' sx={{ width: '50px' }} type='submit'>Login</ComponentButton>
+          <ComponentButton color="success" variant='contained' sx={{ width: '50px' }} type='submit'>Login</ComponentButton>
         </Box>
       </form>
 

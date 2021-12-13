@@ -1,8 +1,7 @@
 import Grid from "@mui/material/Grid";
 
 function Grid8({ children }) {
-  return;
-  <Grid xs={8} sm={8} md={8} lg={8} xl={8}>
+  return <Grid xs={8} sm={8} md={8} lg={8} xl={8}>
     {children}
   </Grid>;
 }
