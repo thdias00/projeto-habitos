@@ -93,6 +93,7 @@ export const AuthProvider = ({ children }) => {
       .catch((error) => console.log(error));
   }, [page]);
 
+  //Criando
   return (
     <AuthContext.Provider
       value={{

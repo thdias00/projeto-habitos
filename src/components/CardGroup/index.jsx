@@ -4,24 +4,25 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
-export default function CardGroup({ name, description }) {
+import { useHistory } from "react-router";
+export default function CardGroup({ name, description, category }) {
+  const history = useHistory();
+  const goToGroupPage = () => history.push("/groups");
   return (
     <Card sx={{ width: "200px" }}>
       <CardContent>
-        {/* <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Grupo:
-        </Typography> */}
         <Typography variant="h6" component="div">
           {name}
         </Typography>
-        {/* <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          info
-        </Typography> */}
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          {category}
+        </Typography>
         <Typography variant="body2">{description}</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">ver mais</Button>
+        <Button onClick={goToGroupPage} size="small">
+          ver mais
+        </Button>
       </CardActions>
     </Card>
   );
