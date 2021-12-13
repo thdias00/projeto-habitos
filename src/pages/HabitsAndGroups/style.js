@@ -1,6 +1,5 @@
 import styled from "styled-components";
 export const DivGroups = styled.div`
-  max-height: 89vh;
+  max-height: 70vh;
   overflow: auto;
-  background-color: red;
 `;

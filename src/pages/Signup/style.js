@@ -1,12 +1,12 @@
 import styled from 'styled-components';
-import LoginSide from "../../assets/decision_making2.png";
+import LoginSide from "../../assets/fe-happiness-banner.png";
 
 export const SignupContainer = styled.div`
   height: 100vh;
 `;
 
 export const Background = styled.div`
-  background-color: var(--green);
+  background-color: #A5D6A7;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -15,7 +15,7 @@ export const Background = styled.div`
   align-items: center;
 `;
 export const MainContainer = styled.div`
-  background-color: white;
+  background-color: #FFA726;
   border-radius: 8px;
   width: 93%;
   height: 97%;

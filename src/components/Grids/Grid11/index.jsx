@@ -1,8 +1,7 @@
 import Grid from "@mui/material/Grid";
 
 function Grid11({ children }) {
-  return;
-  <Grid xs={11} sm={11} md={11} lg={11} xl={11}>
+  return <Grid xs={11} sm={11} md={11} lg={11} xl={11}>
     {children}
   </Grid>;
 }

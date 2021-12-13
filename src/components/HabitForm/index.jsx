@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useHabits } from "../../providers/habits";
-import { TextField, Stack, CardActions } from "@mui/material";
+import { TextField, Stack, CardActions, Slider } from "@mui/material";
 import ComponentButton from "../Button";
 
 const HabitForm = ({edit, habit}) => {
@@ -18,10 +18,12 @@ const HabitForm = ({edit, habit}) => {
     return habit ? habit.frequency : ''; 
   });
   const [achieved, setAchieved] = useState(() => {
-    return habit ? habit.achieved : ''; 
+    return habit ? habit.achieved : false; 
   });
   const [how_much_achieved, setHow_much_achieved] = useState(() => {
-    return habit ? habit.how_much_achieved : ''; 
+    const result = habit ? habit.how_much_achieved : 0;
+    result === 100 ? setAchieved(!achieved) : setAchieved(!achieved);
+    return result; 
   });
   return (
     <>
@@ -54,20 +56,27 @@ const HabitForm = ({edit, habit}) => {
           value={category}
           onChange={e => setCategory(e.target.value)}
         />
-        <TextField
+        {/* <TextField
           variant="standard"
           type="text"
           label="alcançado"
           value={achieved}
           onChange={e => setAchieved(e.target.value)}
+        /> */}
+        <Slider
+          step={5}
+          size="small"
+          valueLabelDisplay="auto"
+          value={how_much_achieved}
+          onChange={e => setHow_much_achieved(e.target.value)}
         />
-        <TextField
+        {/* <TextField
           variant="standard"
           type="text"
           label="atingimento"
           value={how_much_achieved}
           onChange={e => setHow_much_achieved(e.target.value)}
-        />
+        /> */}
       </Stack>
       <Stack direction="row" spacing={2}>
       {edit ? <CardActions>

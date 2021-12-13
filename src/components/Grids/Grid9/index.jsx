@@ -1,8 +1,7 @@
 import Grid from "@mui/material/Grid";
 
 function Grid9({ children }) {
-  return;
-  <Grid xs={9} sm={9} md={9} lg={9} xl={9}>
+  return <Grid xs={9} sm={9} md={9} lg={9} xl={9}>
     {children}
   </Grid>;
 }
