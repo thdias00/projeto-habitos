@@ -59,6 +59,7 @@ const HabitsAndGroups = () => {
                   key={item.id}
                   name={item.name}
                   description={item.description}
+                  id={item.id}
                 />
               ))}
             </DivGroups>

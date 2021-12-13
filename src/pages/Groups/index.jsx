@@ -1,8 +1,7 @@
+import { useParams } from "react-router-dom";
 const Groups = () => {
-    return (
-        <div>
-            Groups
-        </div>
-    )
-}
+  const { id } = useParams();
+  console.log(id);
+  return <div>{id}id aqui</div>;
+};
 export default Groups;

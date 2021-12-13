@@ -5,7 +5,8 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useHistory } from "react-router";
-export default function CardGroup({ name, description, category }) {
+import { Link } from "react-router-dom";
+export default function CardGroup({ name, description, category, id }) {
   const history = useHistory();
   const goToGroupPage = () => history.push("/groups");
   return (
@@ -21,8 +22,11 @@ export default function CardGroup({ name, description, category }) {
       </CardContent>
       <CardActions>
         <Button onClick={goToGroupPage} size="small">
-          ver mais
+          sub
         </Button>
+        <Link key={id} to={`/groups/${id}`}>
+          view group
+        </Link>
       </CardActions>
     </Card>
   );
