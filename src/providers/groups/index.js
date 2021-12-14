@@ -2,7 +2,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 
 import { useAuth } from "../auth";
-import jwt_decode from "jwt-decode";
 
 export const GroupsContext = createContext();
 
@@ -19,10 +18,9 @@ export const GroupsProvider = ({ children }) => {
     setPage(page - 1);
   };
 
-  const { token } = useAuth();
-  useEffect(() => {
-    const userId = jwt_decode(token).user_id;
+  const { token, userId } = useAuth();
 
+  useEffect(() => {
     api
       .get(`/groups/?page=${page}`)
       .then((response) => {
