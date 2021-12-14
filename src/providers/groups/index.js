@@ -1,7 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
+
 import { useAuth } from "../auth";
 import jwt_decode from "jwt-decode";
+
+// import { useAuth } from "./";
+
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
@@ -33,17 +37,16 @@ export const GroupsProvider = ({ children }) => {
       .catch((error) => console.log(error));
   }, []);
 
-  useEffect(
-    () =>
-      api
-        .get("/groups/subscriptions/", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((response) => setMyGroups(response.data)),
-    []
-  );
+  const getMyGroups = () => {
+    api
+      .get("/groups/subscriptions/", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => setMyGroups(response.data));
+  };
+
   const unsubscribe = (id) => {
     api
       .delete(`/groups/${id}/unsubscribe/`, {
@@ -51,7 +54,7 @@ export const GroupsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setMyGroups(response.data));
+      .then((_) => getMyGroups());
   };
   const subscribe = (id) => {
     api
@@ -64,11 +67,13 @@ export const GroupsProvider = ({ children }) => {
           },
         }
       )
-      .then(() => console.log("adicionado"), {
+      .then(
+        (_) => getMyGroups()
         /*Add toast here*/
-      })
+      )
       .catch((error) => console.log(error));
   };
+
   return (
     <GroupsContext.Provider
       value={{
@@ -79,6 +84,7 @@ export const GroupsProvider = ({ children }) => {
         unsubscribe,
         myGroups,
         myCreatedGroups,
+        getMyGroups,
       }}
     >
       {children}

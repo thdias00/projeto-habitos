@@ -1,8 +1,4 @@
-// se inscrever, editar e criar grupos, e redirecionar para a
-//  pagina de detalhes de um grupo escolhido
-//Criar botão que desinscreve/ inscreve o usuário e remove/edita o grupo se dono.
-//ajustar tamanho
-//ajustar estilização da paginação
+//
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -25,7 +21,7 @@ export default function CardGroup({ group }) {
         <Typography variant="body2">{group.description}</Typography>
       </CardContent>
       <CardActions>
-        <CardGroupButton id={group.id} idCreator={group.creator.id} />
+        <CardGroupButton id={group.id} creator={group.creator.id} />
         <Link size="small" key={group.id} to={`/groups/${group.id}`}>
           view group
         </Link>

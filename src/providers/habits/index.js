@@ -48,8 +48,6 @@ export const HabitsProvider = ({ children }) => {
   }
   const habitUpdate = (obj, habitId) => {
     const token = localStorage.getItem("@happyhabits:token") || '';
-    console.log('obj received at habitUpdate: ', obj);
-    console.log('habitId received at habitUpdate: ', habitId);
     api.patch(`/habits/${habitId}/`, obj, {
       headers: {
         Authorization: `Bearer ${token}`
