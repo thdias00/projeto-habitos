@@ -11,22 +11,22 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import { CardGroupButton } from "../../components/CardGroupButton/index";
-
-export default function CardGroup({ name, description, category, id }) {
+import { useGroups } from "../../providers/groups";
+export default function CardGroup({ group }) {
   return (
     <Card sx={{ width: "200px" }}>
       <CardContent>
         <Typography variant="h6" component="div">
-          {name}
+          {group.name}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {category}
+          {group.category}
         </Typography>
-        <Typography variant="body2">{description}</Typography>
+        <Typography variant="body2">{group.description}</Typography>
       </CardContent>
       <CardActions>
-        <CardGroupButton />
-        <Link size="small" key={id} to={`/groups/${id}`}>
+        <CardGroupButton id={group.id} idCreator={group.creator.id} />
+        <Link size="small" key={group.id} to={`/groups/${group.id}`}>
           view group
         </Link>
       </CardActions>
