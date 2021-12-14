@@ -7,7 +7,8 @@ import Grid6 from "../../components/Grids/Grid6";
 import { useGroups } from "../../providers/groups";
 
 const HabitsAndGroups = () => {
-  const { nextGroupPage, backGroupPage, groups } = useGroups();
+  const { nextGroupPage, backGroupPage, groups, myGroups, myCreatedGroups } =
+    useGroups();
   return (
     <>
       <ResponsiveAppBar />
@@ -51,17 +52,21 @@ const HabitsAndGroups = () => {
             >
               Todos os Grupos
             </Typography>
-            <button onClick={nextGroupPage}>next</button>
             <button onClick={backGroupPage}>back</button>
+            <button onClick={nextGroupPage}>next</button>
             <DivGroups>
               {groups.map((item) => (
                 <CardGroup
                   key={item.id}
+                  group={item}
+                  idCreator={item}
                   name={item.name}
-                  description={item.description}
                   id={item.id}
                   activities={item.activities}
                   users_on_group={item.users_on_group}
+                  description={item.description}
+                  category={item.category}
+                  creatorId={item.creator.id}
                 />
               ))}
             </DivGroups>
