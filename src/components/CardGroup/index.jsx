@@ -25,6 +25,7 @@ export default function CardGroup({
       JSON.stringify({ tittle: name, id, activities, users_on_group })
     );
   }
+  console.log(name, id, activities, users_on_group);
   return (
     <Card sx={{ width: "200px" }}>
       <CardContent>

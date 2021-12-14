@@ -6,9 +6,7 @@ import toast from "react-hot-toast";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [userId, setUserId] = useState(
-    () => localStorage.getItem("@happyhabits:userId") || 0
-  );
+  const [userId, setUserId] = useState("");
   const [data, setData] = useState(() => {
     const token = localStorage.getItem("@happyhabits:token") || "";
     const user = localStorage.getItem("@happyhabits:user") || {};
@@ -37,12 +35,8 @@ export const AuthProvider = ({ children }) => {
     api
       .post("/sessions/", userData)
       .then((response) => {
-        localStorage.setItem(
-          "@happyhabits:userId",
-          JSON.stringify(jwt_decode(response.data.access).user_id)
-        );
+        // const userId = jwt_decode(response.data.access).user_id;
         setUserId(jwt_decode(response.data.access).user_id);
-
         const { access } = response.data;
         localStorage.setItem("@happyhabits:token", access);
         api

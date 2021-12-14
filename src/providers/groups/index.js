@@ -31,7 +31,7 @@ export const GroupsProvider = ({ children }) => {
         );
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [page]);
 
   const getMyGroups = () => {
     api
