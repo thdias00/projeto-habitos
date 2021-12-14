@@ -1,15 +1,77 @@
+import { Grid, Box, Typography, Stack } from "@mui/material";
+import ResponsiveAppBar from "../../components/Header";
+import Grid6 from "../../components/Grids/Grid6";
 import { useParams } from "react-router-dom";
 import GoalsComponent from "../../components/GoalsComponent";
-import { useGroups } from '../../providers/groups';
+import { useGoals } from "../../providers/goals";
+import LinearProgressWithLabel from "../../components/LinearProgressWithLabel";
 
 const Groups = () => {
   const { id } = useParams();
-  const { groups } = useGroups();
-  const group = groups.find(el => el.id === id);
+  const { goals } = useGoals();
   return (
     <div>
-      Groups
-      <GoalsComponent arr={group}/>
+      <ResponsiveAppBar />
+      <Grid container spacing={2}>
+        <Grid6>
+          <Box
+            sx={{
+              padding: "1rem",
+              margin: "2rem",
+              height: "90vh",
+              backgroundColor: "#1B5E20",
+            }}
+          >
+            <Typography
+              color="white"
+              padding="1rem 0 .6rem 0"
+              align="center"
+              component="h1"
+              variant="h5"
+            >
+              Metas
+            </Typography>
+            {goals.length !== 0 && <Stack
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                backgroundColor: 'black',
+                padding: '.8rem',
+                margin: '.8rem auto',
+                width: '80%', 
+              }}
+            >
+              <Box>
+                <LinearProgressWithLabel
+                  white='true'
+                  value={Math.round(goals.reduce((acc, val) => acc + val.how_much_achieved, 0) / goals.length)}/>
+              </Box>
+            </Stack>}
+            <GoalsComponent groupId={id} />
+          </Box>
+        </Grid6>
+        <Grid6>
+          <Box
+            sx={{
+              padding: "1rem",
+              margin: "2rem",
+              height: "90vh",
+              backgroundColor: "#1B5E20",
+            }}
+          >
+            <Typography
+              color="white"
+              padding="1rem 0 .6rem 0"
+              align="center"
+              component="h1"
+              variant="h5"
+            >
+              Grupo (nome)
+            </Typography>
+            <h1>outras áreas</h1>
+          </Box>
+        </Grid6>
+      </Grid>
     </div>
   )
 }

@@ -17,7 +17,7 @@ export default function GoalCard({ goal, groupId }) {
       }}>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-            Hábito
+            Meta
           </Typography>
           <Typography variant="h5" component="div">
             {goal.title}
@@ -29,7 +29,6 @@ export default function GoalCard({ goal, groupId }) {
               value={goal.how_much_achieved}
             />
           </Typography>
-          
         </CardContent>
         <Stack direction="row" spacing={2}>
           <CardActions>
@@ -48,7 +47,6 @@ export default function GoalCard({ goal, groupId }) {
             <Button 
               size="small" 
               onClick={() => {
-                // console.log('goal id: ', goal.id);
                 goalDelete(goal.id);
               }}>
               Deletar
@@ -68,7 +66,6 @@ export default function GoalCard({ goal, groupId }) {
           </ModalBase>
         </Stack>
       </Card>
-
     </Box>
   );
 }

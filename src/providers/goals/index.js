@@ -9,25 +9,15 @@ export const GoalsProvider = ({ children }) => {
   const { token } = useAuth();
   const [goals, setGoals] = useState([]);
 
-  // useEffect(() => {
-  //   api
-  //     .get(`/groups/?page=${page}`)
-  //     .then((response) => {
-  //       setGroups(response.data.results);
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, [page]);
-
   const getGoals = (groupId) => {
-    // const token = localStorage.getItem("@happyhabits:token") || '';
     token !== '' &&
-    api.get(`/goals/group=${groupId}/`, {
+    api.get(`/goals/?group=${groupId}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
       .then(response => {
-        setGoals(response.data);
+        setGoals(response.data.results);
       })
       .catch(err => {
         setGoals([]);
@@ -35,10 +25,6 @@ export const GoalsProvider = ({ children }) => {
         console.log(err);
       })
   }
-
-  // useEffect(() => {
-  //   getGoals();
-  // }, [token])
 
   const goalDelete = (goalId) => {
     const token = localStorage.getItem("@happyhabits:token") || '';
@@ -48,9 +34,9 @@ export const GoalsProvider = ({ children }) => {
       }
     })
       .then(response => {
-        // getHabits();
         toast.success('Success deleted!')
         console.log(response);
+        setGoals(goals.filter(el => el.id !== goalId));
       })
       .catch(err => {
         toast.error('Error during exclusion!')
@@ -59,7 +45,8 @@ export const GoalsProvider = ({ children }) => {
   }
 
   const goalCreate = (obj, groupId) => {
-    // const {id} = JSON.parse(localStorage.getItem("@happyhabits:user")) || {};
+    console.log("[goalCreate function] groupId: ", groupId);
+    console.log("[goalCreate function] obj: ", obj);
     const token = localStorage.getItem("@happyhabits:token") || '';
     api.post('/goals/', {...obj, "group": groupId}, {
       headers: {
@@ -67,8 +54,8 @@ export const GoalsProvider = ({ children }) => {
       }
     })
       .then(response => {
-        // getHabits();
         toast.success('Success goal created!');
+        getGoals(groupId);
       })
       .catch(err => {
         toast.error('Error during goal creation!');
@@ -78,17 +65,19 @@ export const GoalsProvider = ({ children }) => {
 
   const goalUpdate = (obj, goalId) => {
     const token = localStorage.getItem("@happyhabits:token") || '';
-    // console.log('obj received at habitUpdate: ', obj);
-    // console.log('habitId received at habitUpdate: ', habitId);
     api.patch(`/goals/${goalId}/`, obj, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
       .then(response => {
-        // getHabits();
         toast.success('Success updated!')
         console.log(response);
+        setGoals([...goals.filter(el => el.id !== goalId), response.data]);
+        console.log('goalId: ', goalId);
+        console.log('obj: ', obj);
+        console.log('response.data updated: ', response.data);
+        console.log('goals updated: ', goals);
       })
       .catch(err => {
         toast.error('Error during update!')
@@ -100,6 +89,7 @@ export const GoalsProvider = ({ children }) => {
     <GoalsContext.Provider
       value={{
         goals,
+        setGoals, 
         goalCreate,
         goalUpdate, 
         goalDelete, 
