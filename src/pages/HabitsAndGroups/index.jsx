@@ -51,10 +51,9 @@ const HabitsAndGroups = () => {
               variant="h5"
             >
               Todos os Grupos
-              <button onClick={backGroupPage}>back</button>
-              <button onClick={nextGroupPage}>next</button>
             </Typography>
-
+            <button onClick={backGroupPage}>back</button>
+            <button onClick={nextGroupPage}>next</button>
             <DivGroups>
               {groups.map((item) => (
                 <CardGroup

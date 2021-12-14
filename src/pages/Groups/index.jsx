@@ -98,11 +98,12 @@ const Groups = () => {
             >
               Atividades
             </Typography>
-            <Activities groupId={id} />
+            <Activities />
           </Box>
         </Grid6>
       </Grid>
     </div>
   );
 };
+
 export default Groups;

@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { CardGroupButton } from "../../components/CardGroupButton/index";
 import { useGroups } from "../../providers/groups";
 export default function CardGroup({
+  group,
   name,
   id,
   activities,

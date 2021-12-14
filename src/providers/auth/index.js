@@ -2,7 +2,6 @@ import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
 import toast from "react-hot-toast";
-import { useMediaQuery } from "@mui/material";
 
 export const AuthContext = createContext();
 
@@ -19,20 +18,22 @@ export const AuthProvider = ({ children }) => {
   });
 
   const signup = (userData, history, reset) => {
-    api.post('/users/', userData)
-      .then(response => {
-        toast.success('Success signing up');
+    api
+      .post("/users/", userData)
+      .then((response) => {
+        toast.success("Success signing up");
         reset();
-        history.push('/login');
+        history.push("/login");
       })
-      .catch(err => {
-        toast.error('Error signing up');
-      })
-  }
+      .catch((err) => {
+        toast.error("Error signing up");
+      });
+  };
 
   const login = (userData, history) => {
-    api.post('/sessions/', userData)
-      .then(response => {
+    api
+      .post("/sessions/", userData)
+      .then((response) => {
         const userId = jwt_decode(response.data.access).user_id;
         const { access } = response.data;
         localStorage.setItem("@happyhabits:token", access);
@@ -43,14 +44,14 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem("@happyhabits:user", JSON.stringify(user));
             setData({ token: access, user });
           })
-          .catch(err => {
-            toast.error('Error retrieving user details!');
+          .catch((err) => {
+            toast.error("Error retrieving user details!");
             console.log(err);
           });
         history.push("/dashboard");
       })
-      .catch(err => {
-        toast.error('Error during login!');
+      .catch((err) => {
+        toast.error("Error during login!");
         console.log(err);
       });
   };
@@ -59,19 +60,23 @@ export const AuthProvider = ({ children }) => {
   );
 
   const updateUser = (userData) => {
-    const token = localStorage.getItem("@happyhabits:token") || '';
-    api.patch(`/users/${user.id}/`, userData, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(response => {
-        toast.success('Usuário atualizado');
-        localStorage.setItem("@happyhabits:user", JSON.stringify(response.data));
-        setUser(JSON.parse(localStorage.getItem("@happyhabits:user")) || {})
+    const token = localStorage.getItem("@happyhabits:token") || "";
+    api
+      .patch(`/users/${user.id}/`, userData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       })
-      .catch(err => {
-        toast.error('Nome de usuário já existente');
+      .then((response) => {
+        toast.success("Usuário atualizado");
+        localStorage.setItem(
+          "@happyhabits:user",
+          JSON.stringify(response.data)
+        );
+        setUser(JSON.parse(localStorage.getItem("@happyhabits:user")) || {});
+      })
+      .catch((err) => {
+        toast.error("Nome de usuário já existente");
       })
       .catch((err) => {
         toast.error("Nome de usuário já existente");
@@ -103,9 +108,6 @@ export const AuthProvider = ({ children }) => {
       .catch((error) => console.log(error));
   }, [page]);
 
-  const mobileVersion = useMediaQuery("max-width:699px")
-  const desktopVersion = useMediaQuery("min-width:700px")
-
   //Criando
   return (
     <AuthContext.Provider
@@ -119,8 +121,6 @@ export const AuthProvider = ({ children }) => {
         groups,
         nextGroupPage,
         backGroupPage,
-        mobileVersion,
-        desktopVersion,
       }}
     >
       {children}

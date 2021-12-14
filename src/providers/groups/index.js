@@ -14,11 +14,9 @@ export const GroupsProvider = ({ children }) => {
 
   const nextGroupPage = () => {
     setPage(page + 1);
-    console.log(page);
   };
   const backGroupPage = () => {
     setPage(page - 1);
-    console.log(page);
   };
 
   const { token } = useAuth();
