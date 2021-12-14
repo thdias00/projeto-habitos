@@ -98,7 +98,7 @@ const Groups = () => {
             >
               Atividades
             </Typography>
-            <Activities />
+            <Activities groupId={id} />
           </Box>
         </Grid6>
       </Grid>
