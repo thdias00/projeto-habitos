@@ -8,21 +8,41 @@ import Typography from "@mui/material/Typography";
 import { Link } from "react-router-dom";
 import { CardGroupButton } from "../../components/CardGroupButton/index";
 import { useGroups } from "../../providers/groups";
-export default function CardGroup({ group }) {
+export default function CardGroup({
+  name,
+  id,
+  activities,
+  users_on_group,
+  description,
+  category,
+  creatorId,
+}) {
+  function updateGroupOnLocalStorage() {
+    localStorage.removeItem("@happyhabits:group");
+    localStorage.setItem(
+      "@happyhabits:group",
+      JSON.stringify({ tittle: name, id, activities, users_on_group })
+    );
+  }
   return (
     <Card sx={{ width: "200px" }}>
       <CardContent>
         <Typography variant="h6" component="div">
-          {group.name}
+          {name}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {group.category}
+          {category}
         </Typography>
-        <Typography variant="body2">{group.description}</Typography>
+        <Typography variant="body2">{description}</Typography>
       </CardContent>
       <CardActions>
-        <CardGroupButton id={group.id} creator={group.creator.id} />
-        <Link size="small" key={group.id} to={`/groups/${group.id}`}>
+        <CardGroupButton id={id} creator={creatorId} />
+        <Link
+          onClick={updateGroupOnLocalStorage}
+          size="small"
+          key={id}
+          to={`/groups/${id}`}
+        >
           view group
         </Link>
       </CardActions>

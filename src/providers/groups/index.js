@@ -4,8 +4,6 @@ import api from "../../services/api";
 import { useAuth } from "../auth";
 import jwt_decode from "jwt-decode";
 
-// import { useAuth } from "./";
-
 export const GroupsContext = createContext();
 
 export const GroupsProvider = ({ children }) => {
