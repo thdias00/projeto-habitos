@@ -7,8 +7,8 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [data, setData] = useState(() => {
-    const token = localStorage.getItem("@happyhabits:token");
-    const user = localStorage.getItem("@happyhabits:user");
+    const token = localStorage.getItem("@happyhabits:token") || "";
+    const user = localStorage.getItem("@happyhabits:user") || {};
 
     if (token && user) {
       return { token, user: JSON.parse(user) };
