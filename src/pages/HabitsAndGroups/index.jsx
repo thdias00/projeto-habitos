@@ -9,7 +9,6 @@ import { useGroups } from "../../providers/groups";
 const HabitsAndGroups = () => {
   const { nextGroupPage, backGroupPage, groups, myGroups, myCreatedGroups } =
     useGroups();
-  console.log(myGroups, "myGroups");
   return (
     <>
       <ResponsiveAppBar />
@@ -52,9 +51,9 @@ const HabitsAndGroups = () => {
               variant="h5"
             >
               Todos os Grupos
+              <button onClick={backGroupPage}>back</button>
+              <button onClick={nextGroupPage}>next</button>
             </Typography>
-            <button onClick={nextGroupPage}>next</button>
-            <button onClick={backGroupPage}>back</button>
 
             <DivGroups>
               {groups.map((item) => (

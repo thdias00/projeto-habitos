@@ -14,9 +14,11 @@ export const GroupsProvider = ({ children }) => {
 
   const nextGroupPage = () => {
     setPage(page + 1);
+    console.log(page);
   };
   const backGroupPage = () => {
     setPage(page - 1);
+    console.log(page);
   };
 
   const { token } = useAuth();
@@ -24,7 +26,7 @@ export const GroupsProvider = ({ children }) => {
     const userId = jwt_decode(token).user_id;
 
     api
-      .get(`/groups/?page=${10}`)
+      .get(`/groups/?page=${page}`)
       .then((response) => {
         setGroups(response.data.results);
         console.log("foii");
