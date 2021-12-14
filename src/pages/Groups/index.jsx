@@ -5,10 +5,13 @@ import { useParams } from "react-router-dom";
 import GoalsComponent from "../../components/GoalsComponent";
 import { useGoals } from "../../providers/goals";
 import LinearProgressWithLabel from "../../components/LinearProgressWithLabel";
+import Participantes from "../../components/Participants";
+import Activities from "../../components/Atividades";
 
 const Groups = () => {
   const { id } = useParams();
   const { goals } = useGoals();
+  const groups = JSON.parse(localStorage.getItem("@happyhabits:group")) || {};
   return (
     <div>
       <ResponsiveAppBar />
@@ -66,9 +69,28 @@ const Groups = () => {
               component="h1"
               variant="h5"
             >
-              Grupo (nome)
+              Grupo - {groups.tittle}
             </Typography>
-            <h1>outras áreas</h1>
+            <Typography
+                            color="white"
+                            padding="1rem 0 .6rem 0"
+                            align="center"
+                            component="h2"
+                            variant="h5"
+                        >
+                            Participantes
+                        </Typography>
+                        <Participantes />
+                        <Typography
+                            color="white"
+                            padding="1rem 0 .6rem 0"
+                            align="center"
+                            component="h2"
+                            variant="h5"
+                        >
+                            Atividades
+                        </Typography>
+                        <Activities />
           </Box>
         </Grid6>
       </Grid>
