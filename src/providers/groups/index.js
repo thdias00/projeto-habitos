@@ -25,7 +25,6 @@ export const GroupsProvider = ({ children }) => {
       .get(`/groups/?page=${page}`)
       .then((response) => {
         setGroups(response.data.results);
-        console.log("foii");
         setMyCreatedGroups(
           groups.filter((item) => item.creator.id === userId.id)
         );

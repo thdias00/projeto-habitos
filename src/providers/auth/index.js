@@ -35,7 +35,6 @@ export const AuthProvider = ({ children }) => {
     api
       .post("/sessions/", userData)
       .then((response) => {
-        // const userId = jwt_decode(response.data.access).user_id;
         setUserId(jwt_decode(response.data.access).user_id);
         const { access } = response.data;
         localStorage.setItem("@happyhabits:token", access);
