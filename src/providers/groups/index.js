@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
+import toast from "react-hot-toast";
 
 import { useAuth } from "../auth";
 
@@ -8,6 +9,7 @@ export const GroupsContext = createContext();
 export const GroupsProvider = ({ children }) => {
   const [myGroups, setMyGroups] = useState([]);
   const [myCreatedGroups, setMyCreatedGroups] = useState([]);
+  const [myCreatedGroup, setMyCreatedGroup] = useState("");
   const [groups, setGroups] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -18,19 +20,22 @@ export const GroupsProvider = ({ children }) => {
     setPage(page - 1);
   };
 
-  const { token, userId } = useAuth();
+  const { token, user } = useAuth();
 
   useEffect(() => {
     api
-      .get(`/groups/?page=${page}`)
+      .get(`/groups/`)
       .then((response) => {
-        setGroups(response.data.results);
-        setMyCreatedGroups(
-          groups.filter((item) => item.creator.id === userId.id)
-        );
+        setGroups([response.data]);
+        // console.log(response.data);
+        // setMyCreatedGroups(
+        //   groups.filter((item) => item.creator.id === userId.id)
+        // );
+        // setMyCreatedGroup(
+        //   groups.find((item) => item.id === id && item.creator.id === user.id)
       })
       .catch((error) => console.log(error));
-  }, [page]);
+  }, [page, myGroups]);
 
   const getMyGroups = () => {
     api
@@ -39,7 +44,9 @@ export const GroupsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((response) => setMyGroups(response.data));
+      .then((response) => {
+        setMyGroups(response.data);
+      });
   };
 
   const unsubscribe = (id) => {
@@ -69,6 +76,38 @@ export const GroupsProvider = ({ children }) => {
       .catch((error) => console.log(error));
   };
 
+  const [groupUpdated, setGroupUpdated] = useState({});
+  const getSpecificGroup = (groupId) => {
+    api
+      .get(`/groups/${groupId}/`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setMyGroups(response.data);
+        setGroupUpdated(response.data);
+      });
+  };
+  const groupUpdate = (obj, habitId) => {
+    const token = localStorage.getItem("@happyhabits:token") || "";
+    api
+      .patch(`/groups/${habitId}/`, obj, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        getMyGroups();
+        toast.success("grupo editado");
+
+        getSpecificGroup(habitId);
+      })
+      .catch((err) => {
+        toast.error("Error during update!");
+        console.log(err);
+      });
+  };
   return (
     <GroupsContext.Provider
       value={{
@@ -80,6 +119,9 @@ export const GroupsProvider = ({ children }) => {
         myGroups,
         myCreatedGroups,
         getMyGroups,
+        token,
+        groupUpdate,
+        groupUpdated,
       }}
     >
       {children}

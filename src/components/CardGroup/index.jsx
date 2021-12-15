@@ -44,7 +44,7 @@ export default function CardGroup({
           key={id}
           to={`/groups/${id}`}
         >
-          view group
+          Ver grupo
         </Link>
       </CardActions>
     </Card>

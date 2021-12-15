@@ -11,6 +11,10 @@ import { useGroups } from "../../providers/groups";
 import { Box } from "@mui/material";
 import { useAuth } from "../../providers/auth";
 import { useEffect } from "react";
+import { EditGroup } from "../EditGroup";
+import { GroupForm } from "../groupForm";
+import ModalBase from "../ModalBase";
+import { useState } from "react";
 export const CardGroupButton = ({ id, creator }) => {
   const {
     groups,
@@ -19,13 +23,24 @@ export const CardGroupButton = ({ id, creator }) => {
     myGroups,
     myCreatedGroups,
     getMyGroups,
+    groupUpdate,
+    groupUpdated,
   } = useGroups();
-
-  let myGroupsIds = myGroups.map((item) => item.id);
-
   const { user } = useAuth();
+  // const [myCreatedGroup, setMyCretedGroup] = useState(
+  //   groups.find((item) => item.id === id && item.creator.id === user.id)
+  // );
+  console.log(myGroups);
+  const [myGroupsIds, setMyGroupsIds] = useState([]);
+  // setMyGroupsIds(myGroups.map((item) => item.id));
+  console.log(myGroups);
   return user.id === creator ? (
-    <Box>Renderizar dono</Box>
+    <Box>
+      <span> você é o criador desse grupo</span>
+      <ModalBase labelToCallModal="editar Grupo" titleModal="Edite seu grupo">
+        <GroupForm edit={"editGroup"} id={id} />
+      </ModalBase>
+    </Box>
   ) : (
     <Box>
       {myGroupsIds.includes(id) ? (
