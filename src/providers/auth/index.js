@@ -112,7 +112,7 @@ export const AuthProvider = ({ children }) => {
 
   const mobileVersion = useMediaQuery('(max-width:699px)')
   const desktopVersion = useMediaQuery('(min-width:700px)')
-  
+
   //Criando
   return (
     <AuthContext.Provider
@@ -127,6 +127,8 @@ export const AuthProvider = ({ children }) => {
         nextGroupPage,
         backGroupPage,
         userId,
+        mobileVersion,
+        desktopVersion,
       }}
     >
       {children}
