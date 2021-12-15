@@ -15,7 +15,7 @@ const Groups = () => {
     const { theme } = useColors()
     const { id } = useParams();
     const { goals } = useGoals();
-    const { mobileVersion, desktopVersion } = useAuth();
+    const { mobileVersion } = useAuth();
 
     const groups = JSON.parse(localStorage.getItem("@happyhabits:group")) || {};
     return (

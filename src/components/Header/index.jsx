@@ -53,7 +53,7 @@ const ResponsiveAppBar = ({ color }) => {
         setValor("");
         setVal("");
     }
-    console.log(color)
+    // console.log(color)
     return (
         <AppBar position="static" sx={{ background: `${color}` }} >
             <Container maxWidth="xl">
