@@ -103,8 +103,8 @@ export const AuthProvider = ({ children }) => {
       .catch((error) => console.log(error));
   }, [page]);
 
-  const mobileVersion = useMediaQuery("max-width:699px")
-  const desktopVersion = useMediaQuery("min-width:700px")
+  const mobileVersion = useMediaQuery("(max-width:699px)")
+  const desktopVersion = useMediaQuery("(min-width:700px)")
 
   //Criando
   return (
