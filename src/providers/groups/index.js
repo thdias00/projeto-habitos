@@ -10,7 +10,6 @@ export const GroupsProvider = ({ children }) => {
 
   const [myGroups, setMyGroups] = useState([]);
   const [myCreatedGroups, setMyCreatedGroups] = useState([]);
-  const [myCreatedGroup, setMyCreatedGroup] = useState("");
   const [groups, setGroups] = useState([]);
   const [page, setPage] = useState(1);
 
@@ -18,7 +17,9 @@ export const GroupsProvider = ({ children }) => {
     setPage(page + 1);
   };
   const backGroupPage = () => {
-    setPage(page - 1);
+    if (page > 1) {
+      setPage(page - 1);
+    }
   };
 
   const { token, user } = useAuth();
@@ -32,7 +33,7 @@ export const GroupsProvider = ({ children }) => {
       })
 
       .catch((error) => console.log(error));
-  }, [page, user.id]);
+  }, [page, user.id, myGroupsIds]);
 
   const getMyGroups = () => {
     api
@@ -107,6 +108,7 @@ export const GroupsProvider = ({ children }) => {
         toast.success("grupo editado");
 
         getSpecificGroup(habitId);
+        console.log(response.config, "atualizou!!");
       })
       .catch((err) => {
         toast.error("Error during update!");
