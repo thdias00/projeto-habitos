@@ -8,14 +8,15 @@ const Dashboard = () => {
       <ResponsiveAppBar />
       <Box
         sx={{
-          padding: '1rem',
-          margin: '1rem',
-          height: '90vh',
-          backgroundColor: '#1B5E20',
-        }}>
-        <DashboardCardHabits/>
+          padding: "1rem",
+          margin: "1rem",
+          height: "87vh",
+          backgroundColor: "#1B5E20",
+        }}
+      >
+        <DashboardCardHabits />
       </Box>
     </div>
-  )
-}
+  );
+};
 export default Dashboard;
