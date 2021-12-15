@@ -16,10 +16,7 @@ export default function CardGroup({
   const { mobileVersion } = useAuth();
   function updateGroupOnLocalStorage() {
     localStorage.removeItem("@happyhabits:group");
-    localStorage.setItem(
-      "@happyhabits:group",
-      JSON.stringify({ group })
-    );
+    localStorage.setItem("@happyhabits:group", JSON.stringify({ group }));
   }
   return (
     <Card
@@ -27,7 +24,8 @@ export default function CardGroup({
         width: "100%",
         padding: ".2rem",
         margin: mobileVersion ? "0 0 .8rem 0" : "0 0 2rem 0",
-      }}>
+      }}
+    >
       <CardContent>
         <Typography variant="h6" component="div">
           {name}
@@ -45,7 +43,7 @@ export default function CardGroup({
           key={id}
           to={`/groups/${id}`}
         >
-          view group
+          Ver grupo
         </Link>
       </CardActions>
     </Card>
