@@ -1,33 +1,42 @@
-import { Card, CardActions, CardContent, Typography, Button, Stack, Fab } from "@mui/material";
+import {
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+  Button,
+  Stack,
+  Fab,
+} from "@mui/material";
 import ModalBase from "../../components/ModalBase";
-import ActivitiesForm from '../ActivitiesForm';
-import AddIcon from '@mui/icons-material/Add';
+import ActivitiesForm from "../ActivitiesForm";
+import AddIcon from "@mui/icons-material/Add";
 import api from "../../services/api";
 import { useEffect } from "react";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 import { useAuth } from "../../providers/auth";
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
-import { useActivities } from "../../providers/activities"
+import { useActivities } from "../../providers/activities";
 
 const Activities = ({ groupId }) => {
-    const { token } = useAuth();
-    const { activities, setActivities, activitieDelete } = useActivities();
+  const { token } = useAuth();
+  const { activities, setActivities, activitieDelete } = useActivities();
 
-    useEffect(() => {
-        token !== '' &&
-            api.get(`/activities/?group=${groupId}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-                .then(response => {
-                    setActivities(response.data.results);
-                })
-                .catch(err => {
-                    toast.error('Error during goal retrieving!');
-                })
-    }, [setActivities, token, groupId]);
+  useEffect(() => {
+    token !== "" &&
+      api
+        .get(`/activities/?group=${groupId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((response) => {
+          setActivities(response.data.results);
+        })
+        .catch((err) => {
+          toast.error("Error during goal retrieving!");
+        });
+  }, [setActivities, token, groupId]);
 
     return (
         <div>
@@ -65,7 +74,7 @@ const Activities = ({ groupId }) => {
                     <ActivitiesForm groupId={groupId} />
                 </ModalBase>
             </Stack>
-        </div>
-    )
-}
+    </div>
+  );
+};
 export default Activities;

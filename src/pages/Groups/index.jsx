@@ -11,6 +11,7 @@ import { useColors } from "../../providers/colors";
 import { useAuth } from "../../providers/auth";
 
 const Groups = () => {
+
     const { theme } = useColors()
     const { id } = useParams();
     const { goals } = useGoals();
