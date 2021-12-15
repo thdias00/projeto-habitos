@@ -12,6 +12,9 @@ export const ColorsProvider = ({ children }) => {
                 dark: "#1B5E20",
 
             },
+            primaryLight: {
+                main: "#A5D6A7",
+            },
             secondary: {
                 main: "#ffffff",
                 light: "#ffffff",
@@ -26,6 +29,9 @@ export const ColorsProvider = ({ children }) => {
                 main: "#FFA726",
                 light: "#FFB851",
                 dark: "#B2741A",
+            },
+            warningLight: {
+                main: "#FFB851"
             },
             info: {
                 main: "#26C6DA",

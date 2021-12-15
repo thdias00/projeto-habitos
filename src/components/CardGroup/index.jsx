@@ -12,8 +12,6 @@ export default function CardGroup({
   group,
   name,
   id,
-  activities,
-  users_on_group,
   description,
   category,
   creatorId,
@@ -22,7 +20,7 @@ export default function CardGroup({
     localStorage.removeItem("@happyhabits:group");
     localStorage.setItem(
       "@happyhabits:group",
-      JSON.stringify({ tittle: name, id, activities, users_on_group })
+      JSON.stringify({ group })
     );
   }
   return (

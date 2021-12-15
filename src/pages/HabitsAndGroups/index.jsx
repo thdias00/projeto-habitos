@@ -62,8 +62,6 @@ const HabitsAndGroups = () => {
                   idCreator={item}
                   name={item.name}
                   id={item.id}
-                  activities={item.activities}
-                  users_on_group={item.users_on_group}
                   description={item.description}
                   category={item.category}
                   creatorId={item.creator.id}
