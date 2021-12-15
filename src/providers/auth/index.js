@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
 import toast from "react-hot-toast";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export const AuthContext = createContext();
 
