@@ -1,6 +1,6 @@
 import Box from "@mui/material/Box";
 import BottomNavigation from "@mui/material/BottomNavigation";
-import { BottomNavigationAction, Paper, Typography, ThemeProvider, Stack, Fab, Grid, Card, CardContent, CardActions, Button, Avatar } from "@mui/material";
+import { BottomNavigationAction, Paper, Typography, ThemeProvider, Stack, Fab, Grid, CardContent, CardActions, Button, Avatar } from "@mui/material";
 import ModalBase from "../ModalBase";
 import ActivitiesForm from "../ActivitiesForm";
 import AddIcon from "@mui/icons-material/Add";
@@ -49,7 +49,7 @@ export default function MobileGroupVersion() {
                 .catch((err) => {
                     toast.error("Error during activities retrieving!");
                 });
-    }, [setActivities, token, groups.group.ud]);
+    }, [setActivities, token, groups.group.id]);
     useEffect(() => {
         token !== '' &&
             api.get(`/goals/?group=${groups.group.id}`, {
