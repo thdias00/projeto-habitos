@@ -1,18 +1,24 @@
 import styled from 'styled-components';
 import LoginSide from "../../assets/fe-happiness-banner.png";
+import MobileBackground from "../../assets/happybg.png";
 
 export const SignupContainer = styled.div`
   height: 100vh;
 `;
 
 export const Background = styled.div`
-  background-color: #A5D6A7;
+  background: url(${MobileBackground}) no-repeat center;
+  background-size: cover;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: 768px) {
+    background: none;
+    background-color: #A5D6A7;
+  }
 `;
 export const MainContainer = styled.div`
   background-color: #FFA726;

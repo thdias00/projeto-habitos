@@ -10,15 +10,15 @@ import Button from "@mui/material/Button";
 import { useGroups } from "../../providers/groups";
 import { Box } from "@mui/material";
 import { useAuth } from "../../providers/auth";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 export const CardGroupButton = ({ id, creator }) => {
   const {
-    groups,
+    // groups,
     subscribe,
     unsubscribe,
     myGroups,
-    myCreatedGroups,
-    getMyGroups,
+    // myCreatedGroups,
+    // getMyGroups,
   } = useGroups();
 
   let myGroupsIds = myGroups.map((item) => item.id);
