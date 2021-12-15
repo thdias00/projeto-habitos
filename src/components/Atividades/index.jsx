@@ -6,6 +6,7 @@ import api from "../../services/api";
 import { useEffect } from "react";
 import toast from 'react-hot-toast';
 import { useAuth } from "../../providers/auth";
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 import { useActivities } from "../../providers/activities"
 
@@ -31,20 +32,21 @@ const Activities = ({ groupId }) => {
     return (
         <div>
             {activities.length > 0 ?
-                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center" }}>
+                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "flex-start" }}>
                     {activities.map((item) =>
                         <Card key={item.id} sx={{ margin: "1%", width: "30%" }}>
-                            <CardContent>
+                            <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
                                 <Typography variant="h6" component="div">
                                     {item.title}
                                 </Typography>
                                 <CardActions>
                                     <Button
+                                        color="grey"
                                         size="small"
                                         onClick={() => {
                                             activitieDelete(item.id);
                                         }}>
-                                        Deletar
+                                        <DeleteForeverIcon />
                                     </Button>
                                 </CardActions>
                             </CardContent>
