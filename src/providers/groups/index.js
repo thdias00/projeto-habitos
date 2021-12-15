@@ -5,8 +5,9 @@ import toast from "react-hot-toast";
 import { useAuth } from "../auth";
 
 export const GroupsContext = createContext();
-
 export const GroupsProvider = ({ children }) => {
+  const [myGroupsIds, setMyGroupsIds] = useState([]);
+
   const [myGroups, setMyGroups] = useState([]);
   const [myCreatedGroups, setMyCreatedGroups] = useState([]);
   const [myCreatedGroup, setMyCreatedGroup] = useState("");
@@ -24,18 +25,13 @@ export const GroupsProvider = ({ children }) => {
 
   useEffect(() => {
     api
-      .get(`/groups/`)
+      .get(`/groups/?page=${page}`)
       .then((response) => {
-        setGroups([response.data]);
-        // console.log(response.data);
-        // setMyCreatedGroups(
-        //   groups.filter((item) => item.creator.id === userId.id)
-        // );
-        // setMyCreatedGroup(
-        //   groups.find((item) => item.id === id && item.creator.id === user.id)
+        setGroups(response.data.results);
+        console.log("resposta da api", response.data);
       })
-      .catch((error) => console.log(error));
-  }, [page, myGroups]);
+      .catch((error) => console.log(error, "ERRO"));
+  }, [page]);
 
   const getMyGroups = () => {
     api
@@ -46,6 +42,7 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((response) => {
         setMyGroups(response.data);
+        setMyGroupsIds(response.data.map((item) => item.id));
       });
   };
 
@@ -56,7 +53,11 @@ export const GroupsProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
       })
-      .then((_) => getMyGroups());
+      .then((_) => {
+        getMyGroups();
+        console.log("DESINSCRITO");
+      })
+      .catch((err) => console.log(err, "ERRO AO DESINSCREVER"));
   };
   const subscribe = (id) => {
     api
@@ -70,10 +71,13 @@ export const GroupsProvider = ({ children }) => {
         }
       )
       .then(
-        (_) => getMyGroups()
+        (_) => {
+          getMyGroups();
+          console.log("inscrito");
+        }
         /*Add toast here*/
       )
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error, "ERRO AO INSCREVER"));
   };
 
   const [groupUpdated, setGroupUpdated] = useState({});
@@ -122,6 +126,7 @@ export const GroupsProvider = ({ children }) => {
         token,
         groupUpdate,
         groupUpdated,
+        myGroupsIds,
       }}
     >
       {children}

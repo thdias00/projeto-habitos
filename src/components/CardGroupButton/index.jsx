@@ -25,15 +25,15 @@ export const CardGroupButton = ({ id, creator }) => {
     getMyGroups,
     groupUpdate,
     groupUpdated,
+    myGroupsIds,
   } = useGroups();
   const { user } = useAuth();
   // const [myCreatedGroup, setMyCretedGroup] = useState(
   //   groups.find((item) => item.id === id && item.creator.id === user.id)
   // );
-  console.log(myGroups);
-  const [myGroupsIds, setMyGroupsIds] = useState([]);
-  // setMyGroupsIds(myGroups.map((item) => item.id));
-  console.log(myGroups);
+
+  console.log(myGroupsIds);
+
   return user.id === creator ? (
     <Box>
       <span> você é o criador desse grupo</span>

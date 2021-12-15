@@ -27,8 +27,7 @@ export const GroupForm = ({ edit, id }) => {
       id
     );
   };
-
-  console.log("look ==>", groupUpdated);
+  console.log(name, category, description);
   return (
     <>
       <Stack>
