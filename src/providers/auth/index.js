@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
 import toast from "react-hot-toast";
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export const AuthContext = createContext();
 
@@ -109,6 +110,9 @@ export const AuthProvider = ({ children }) => {
       .catch((error) => console.log(error));
   }, [page]);
 
+  const mobileVersion = useMediaQuery('(max-width:699px)')
+  const desktopVersion = useMediaQuery('(min-width:700px)')
+  
   //Criando
   return (
     <AuthContext.Provider
