@@ -9,7 +9,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 export default function HabitCard({ habit }) {
-  const { mobileVersion, desktopVersion } = useAuth();
+  const { desktopVersion } = useAuth();
   const { habitDelete, habitUpdate } = useHabits();
   return (
     <Box

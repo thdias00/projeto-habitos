@@ -12,7 +12,7 @@ import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = ({ color }) => {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const history = useHistory();
@@ -53,8 +53,9 @@ const ResponsiveAppBar = () => {
         setValor("");
         setVal("");
     }
+    // console.log(color)
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{ background: `${color}` }} >
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
@@ -198,7 +199,7 @@ const ResponsiveAppBar = () => {
                     </Box>
                 </Toolbar>
             </Container>
-        </AppBar>
+        </AppBar >
     );
 };
 export default ResponsiveAppBar;

@@ -10,12 +10,17 @@ import { useGroups } from "../../providers/groups";
 import { useAuth } from "../../providers/auth";
 import { useState } from 'react';
 import ComponentButton from "../../components/Button";
-// import MobileBackground from "../../assets/happybg.png";
 
 const HabitsAndGroups = () => {
-  const { nextGroupPage, backGroupPage, groups } = useGroups();
+
+  const {
+    nextGroupPage,
+    backGroupPage,
+    groups,
+    // myGroups,
+    // myCreatedGroups
+  } = useGroups();
   const { mobileVersion, desktopVersion } = useAuth();
-  const greenDesktop = "#1B5E20";
   const [navOption, setNavOption] = useState(0);
 
   const habitsContainer = (
@@ -75,11 +80,15 @@ const HabitsAndGroups = () => {
         {groups.map((item) => (
           <CardGroup
             key={item.id}
+            group={item}
+            idCreator={item}
             name={item.name}
-            description={item.description}
             id={item.id}
             activities={item.activities}
             users_on_group={item.users_on_group}
+            description={item.description}
+            category={item.category}
+            creatorId={item.creator.id}
           />
         ))}
       </DivGroups>
@@ -88,11 +97,8 @@ const HabitsAndGroups = () => {
   return (
     <HabitsAndGroupsContainer>
     <Box sx={{
-      // background: `url(${MobileBackground}) no-repeat center`,
       backdropFilter: desktopVersion ? `none` : `brightness(7)`,
-      // backdropFilter: desktopVersion ? `none` : `grayscale(0.5) opacity(.1)`,
       backgroundSize: `cover`,
-      // backgroundColor: 'gray',
     }}
     >
       <ResponsiveAppBar />
@@ -112,10 +118,6 @@ const HabitsAndGroups = () => {
           overFlow: 'hidden'
         }}>
           <Grid >
-            {/* <button onClick={handleHabits}>hábitos</button>
-            <button onClick={handleGroups}>grupos</button>
-            {showHabits && habitsContainer}
-            {showGroups && allGroupsContainer} */}
             {navOption === 0 ? habitsContainer : allGroupsContainer}
             <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
         <BottomNavigation
