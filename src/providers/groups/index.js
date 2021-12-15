@@ -30,8 +30,9 @@ export const GroupsProvider = ({ children }) => {
         setGroups(response.data.results);
         console.log("resposta da api", response.data);
       })
-      .catch((error) => console.log(error, "ERRO"));
-  }, [page]);
+
+      .catch((error) => console.log(error));
+  }, [page, user.id]);
 
   const getMyGroups = () => {
     api

@@ -15,9 +15,9 @@ export default function Participantes() {
         width: 300,
       },
     ],
-    rows: groups.users_on_group,
+    rows: groups.group.users_on_group,
   };
-  console.log(data);
+
   return (
     <div style={{ height: "40%", width: "100%" }}>
       <DataGrid

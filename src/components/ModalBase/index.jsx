@@ -30,7 +30,7 @@ export default function ModalBase({ labelToCallModal, titleModal, children }) {
 
   return (
     <div>
-      <Button onClick={handleOpen}>{labelToCallModal}</Button>
+      <Button sx={{padding: 0}} onClick={handleOpen}>{labelToCallModal}</Button>
       <Modal
         open={open}
         onClose={handleClose}
