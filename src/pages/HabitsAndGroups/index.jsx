@@ -134,7 +134,7 @@ const HabitsAndGroups = () => {
                   <AddIcon />
                 </Fab>
               }
-              titleModal="Adicionar Hábitos"
+              titleModal="Adicionar Grupo"
             >
               <GroupForm />
             </ModalBase>

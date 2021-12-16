@@ -164,24 +164,23 @@ export default function MobileGroupVersion() {
                     {groups.group.description}
                   </Typography>
                   <div>
-                    {users.map((item) => item.id).includes(user.id) ?
-                      (
-                        <div style={{ display: "flex" }}>
-                          <RemoveCircleIcon
-                            onClick={() => unsubscribe(groups.group.id)}
-                            sx={{ marginRight: "0.5rem" }}
-                          />
-                          <Typography> - Sair do Grupo</Typography>
-                        </div>
-                      ) : (
-                        <div style={{ display: "flex" }}>
-                          <AddCircleIcon
-                            onClick={() => subscribe(groups.group.id)}
-                            sx={{ marginRight: "0.5rem" }}
-                          />
-                          <Typography> - Entrar no grupo</Typography>
-                        </div>
-                      )}
+                    {users.map((item) => item.id).includes(user.id) ? (
+                      <div style={{ display: "flex" }}>
+                        <RemoveCircleIcon
+                          onClick={() => unsubscribe(groups.group.id)}
+                          sx={{ marginRight: "0.5rem" }}
+                        />
+                        <Typography> - Sair do Grupo</Typography>
+                      </div>
+                    ) : (
+                      <div style={{ display: "flex" }}>
+                        <AddCircleIcon
+                          onClick={() => subscribe(groups.group.id)}
+                          sx={{ marginRight: "0.5rem" }}
+                        />
+                        <Typography> - Entrar no grupo</Typography>
+                      </div>
+                    )}
                   </div>
                 </>
               )}
@@ -221,8 +220,28 @@ export default function MobileGroupVersion() {
                         width: "70%",
                       }}
                     >
-                      <Typography sx={{ width: "100%", display: "inline-block", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", }}>{item.username}</Typography>
-                      <Typography sx={{ width: "100%", display: "inline-block", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", }}>{item.email}</Typography>
+                      <Typography
+                        sx={{
+                          width: "100%",
+                          display: "inline-block",
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {item.username}
+                      </Typography>
+                      <Typography
+                        sx={{
+                          width: "100%",
+                          display: "inline-block",
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {item.email}
+                      </Typography>
                     </div>
                   </div>
                 ))}
@@ -234,7 +253,13 @@ export default function MobileGroupVersion() {
           <Grid
             container
             spacing={2}
-            sx={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginLeft: "0px" }}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              marginLeft: "0px",
+            }}
           >
             {activities.length > 0 ? (
               activities.map((item) => (
@@ -257,7 +282,11 @@ export default function MobileGroupVersion() {
                     >
                       <div style={{ width: "100%" }}>
                         <CardContent
-                          sx={{ display: "flex", alignItems: "center", width: "100%" }}
+                          sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            width: "100%",
+                          }}
                         >
                           <Typography variant="h6" component="div">
                             {item.title}
@@ -312,7 +341,11 @@ export default function MobileGroupVersion() {
           <Grid
             container
             spacing={2}
-            sx={{ display: "flex", justifyContent: "center", marginLeft: "0px" }}
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              marginLeft: "0px",
+            }}
           >
             {goals.length > 0 ? (
               goals.map((item) => (
@@ -343,7 +376,13 @@ export default function MobileGroupVersion() {
                             width: "100%",
                           }}
                         >
-                          <div>
+                          <div
+                            style={{
+                              display: "flex",
+                              flexDirection: "column",
+                              alignItems: "center",
+                            }}
+                          >
                             <Typography
                               sx={{ marginBottom: "1rem" }}
                               variant="h6"
@@ -450,6 +489,6 @@ export default function MobileGroupVersion() {
           </BottomNavigation>
         </Paper>
       </Box>
-    </ThemeProvider >
+    </ThemeProvider>
   );
 }

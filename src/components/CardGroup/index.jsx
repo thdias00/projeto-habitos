@@ -35,14 +35,15 @@ export default function CardGroup({
           <Typography variant="h6" component="div">
             {name}
           </Typography>
-          <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            categoria: {category}
-          </Typography>
+          <Typography>categoria: {category}</Typography>
           <p>descrição: {description}</p>
         </CardContent>
         <CardActions>
           <CardGroupButton id={id} creator={creatorId} />
-          <ComponentButton onClick={updateGroupOnLocalStorage}>
+          <ComponentButton
+            sx={{ width: "75px", padding: "0" }}
+            onClick={updateGroupOnLocalStorage}
+          >
             ver mais
           </ComponentButton>
         </CardActions>
