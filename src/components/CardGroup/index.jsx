@@ -16,6 +16,7 @@ export default function CardGroup({
 }) {
   const { mobileVersion } = useAuth();
   function updateGroupOnLocalStorage() {
+    history.push(`/groups/${id}`)
     localStorage.removeItem("@happyhabits:group");
     localStorage.setItem("@happyhabits:group", JSON.stringify({ group }));
   }
@@ -39,7 +40,7 @@ export default function CardGroup({
       </CardContent>
       <CardActions>
         <CardGroupButton id={id} creator={creatorId} />
-        <ComponentButton onClick={() => history.push(`/groups/${id}`)}>
+        <ComponentButton onClick={updateGroupOnLocalStorage}>
           ver mais
         </ComponentButton>
       </CardActions>
