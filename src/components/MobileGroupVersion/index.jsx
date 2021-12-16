@@ -196,7 +196,6 @@ export default function MobileGroupVersion() {
                   height: "auto",
                   padding: " 1rem 0.5rem",
                   margin: "2rem",
-                  width: "81.45%",
                 }}
               >
                 {users.map((item) => (
