@@ -54,7 +54,7 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((_) => {
         getMyGroups();
-        console.log("DESINSCRITO");
+        toast.success("Você saiu do grupo");
       })
       .catch((err) => console.log(err, "ERRO AO DESINSCREVER"));
   };
@@ -73,7 +73,7 @@ export const GroupsProvider = ({ children }) => {
         (_) => {
           getMyGroups();
 
-          console.log("inscrito");
+          toast.success("Você entrou no grupo");
         }
         /*Add toast here*/
       )
@@ -106,7 +106,6 @@ export const GroupsProvider = ({ children }) => {
         toast.success("grupo editado");
 
         getSpecificGroup(habitId);
-        console.log(response.config, "atualizou!!");
       })
       .catch((err) => {
         toast.error("Error during update!");
@@ -115,13 +114,14 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const groupCreate = (obj) => {
-    api.post(`/groups/`, obj, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(_ => toast.success("Grupo criado com sucesso"))
-      .catch(err => console.log(err));
+    api
+      .post(`/groups/`, obj, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((_) => toast.success("Grupo criado com sucesso"))
+      .catch((err) => console.log(err));
   };
 
   return (
