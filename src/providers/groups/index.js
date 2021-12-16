@@ -1,7 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import toast from "react-hot-toast";
-
 import { useAuth } from "../auth";
 
 export const GroupsContext = createContext();
@@ -113,6 +112,17 @@ export const GroupsProvider = ({ children }) => {
         console.log(err);
       });
   };
+
+  const groupCreate = (obj) => {
+    api.post(`/groups/`, obj, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(_ => toast.success("Grupo criado com sucesso"))
+      .catch(err => console.log(err));
+  };
+  
   return (
     <GroupsContext.Provider
       value={{
@@ -128,6 +138,7 @@ export const GroupsProvider = ({ children }) => {
         groupUpdate,
         groupUpdated,
         myGroupsIds,
+        groupCreate,
       }}
     >
       {children}
