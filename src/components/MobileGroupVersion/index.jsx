@@ -196,6 +196,7 @@ export default function MobileGroupVersion() {
                   height: "auto",
                   padding: " 1rem 0.5rem",
                   margin: "2rem",
+                  width: "81.45%",
                 }}
               >
                 {users.map((item) => (
@@ -205,6 +206,7 @@ export default function MobileGroupVersion() {
                       display: "flex",
                       alignItems: "center",
                       margin: "0.5rem",
+                      width: "94%",
                     }}
                   >
                     <Avatar
@@ -217,10 +219,11 @@ export default function MobileGroupVersion() {
                         display: "flex",
                         flexDirection: "column",
                         margin: "0.5rem 1rem",
+                        width: "70%",
                       }}
                     >
-                      <Typography>{item.username}</Typography>
-                      <Typography>{item.email}</Typography>
+                      <Typography sx={{ width: "100%", display: "inline-block", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", }}>{item.username}</Typography>
+                      <Typography sx={{ width: "100%", display: "inline-block", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", }}>{item.email}</Typography>
                     </div>
                   </div>
                 ))}
@@ -236,7 +239,7 @@ export default function MobileGroupVersion() {
           >
             {activities.length > 0 ? (
               activities.map((item) => (
-                <Grid11 key={item.id}>
+                <Grid11 key={item.id} width="90%">
                   <Box
                     sx={{
                       borderRadius: "5px",
@@ -253,13 +256,14 @@ export default function MobileGroupVersion() {
                         justifyContent: "center",
                       }}
                     >
-                      <div>
+                      <div style={{ width: "100%" }}>
                         <CardContent
-                          sx={{ display: "flex", alignItems: "center" }}
+                          sx={{ display: "flex", alignItems: "center", width: "100%" }}
                         >
                           <Typography variant="h6" component="div">
                             {item.title}
                           </Typography>
+                          <Box sx={{ flexGrow: 1 }} />
                           <CardActions>
                             <Button
                               color="grey"
