@@ -1,6 +1,20 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const StyledLink = styled.Link`
-  text-decoration: none;
+export const StyledContainer = styled.div`
+  width: 80%;
+  background: red;
+
+  p {
+    width: 35vw;
+    overflow: "hidden";
+    text-overflow: ellipsis;
+    whiteSpace: "nowrap",
+    display: "block",
+
+  }
 `;
+
+// div {
+//   background-color: cyan;
+//   width: 100%;
+// }
