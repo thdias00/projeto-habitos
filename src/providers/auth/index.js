@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
 import toast from "react-hot-toast";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const AuthContext = createContext();
 
@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
         const { access } = response.data;
         localStorage.setItem("@happyhabits:token", access);
         api
-          .get(`/users/${userId}/`)
+          .get(`/users/${jwt_decode(response.data.access).user_id}/`)
           .then((response) => {
             const user = response.data;
             localStorage.setItem("@happyhabits:user", JSON.stringify(user));
@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }) => {
       })
       .catch((err) => {
         toast.error("Nome de usuário já existente");
-      })
+      });
   };
   const logout = () => {
     localStorage.removeItem("@happyhabits:token");
@@ -107,8 +107,8 @@ export const AuthProvider = ({ children }) => {
       .catch((error) => console.log(error));
   }, [page]);
 
-  const mobileVersion = useMediaQuery("(max-width:699px)")
-  const desktopVersion = useMediaQuery("(min-width:700px)")
+  const mobileVersion = useMediaQuery("(max-width:699px)");
+  const desktopVersion = useMediaQuery("(min-width:700px)");
 
   //Criando
   return (
