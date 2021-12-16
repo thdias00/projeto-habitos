@@ -51,71 +51,71 @@ const HabitsAndGroups = () => {
 
   const allGroupsContainer = (
     <Box>
-    <Box
-      sx={{
-        padding: desktopVersion ? '1rem' : '.4rem',
-        margin: desktopVersion ? '2rem' : 'none',
-        height: desktopVersion ? '90vh' : 'none',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        backgroundColor: desktopVersion ? "#1B5E20" : 'none',
-      }}>
-      <Typography
-        color="white"
-        padding="1rem 0 .6rem 0"
-        align="center"
-        component="h1"
-        variant="h5"
-        sx={{ color: desktopVersion ? 'white' : '#418C40' }}>
-        Todos os Grupos
-      </Typography>
-      {mobileVersion && <Box sx={{
-        position: 'absolute',
-        right: 10,
-        top: 65,
-      }}>
-        <ModalBase
-          labelToCallModal={
-            <Fab
-              size={desktopVersion ? 'large' : 'medium'}
-              sx={{ padding: 0 }}
-              color="primary"
-              aria-label="add">
-              <AddIcon sx={{padding: 0}}/>
-            </Fab>}
-          titleModal='Adicionar Hábitos'>
-          <GroupForm/>
-          </ModalBase>
-      </Box>}
-      <Stack display="flex" direction="row" padding=".8rem">
-        <ComponentButton sx={{ margin: ".2rem" }} variant="contained" size="small" onClick={backGroupPage}>Voltar</ComponentButton>
-        <ComponentButton sx={{ margin: ".2rem" }} variant="contained" size="small" onClick={nextGroupPage}>Avançar</ComponentButton>
-      </Stack>
-      <DivGroups
-        style={{
-          overflow: "auto",
-          height: desktopVersion ? '70vh' : '70vh',
-          width: desktopVersion ? '80%' : 'none',
-          // padding: '.2rem',
+      <Box
+        sx={{
+          padding: desktopVersion ? '1rem' : '.4rem',
+          margin: desktopVersion ? '2rem' : 'none',
+          height: desktopVersion ? '90vh' : 'none',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          backgroundColor: desktopVersion ? "#1B5E20" : 'none',
         }}>
-        {groups.map((item) => (
-          <CardGroup
-            key={item.id}
-            group={item}
-            idCreator={item}
-            name={item.name}
-            id={item.id}
-            activities={item.activities}
-            users_on_group={item.users_on_group}
-            description={item.description}
-            category={item.category}
-            creatorId={item.creator.id}
-          />
-        ))}
-      </DivGroups>
-        </Box>
-        {desktopVersion && <Box sx={{
+        <Typography
+          color="white"
+          padding="1rem 0 .6rem 0"
+          align="center"
+          component="h1"
+          variant="h5"
+          sx={{ color: desktopVersion ? 'white' : '#418C40' }}>
+          Todos os Grupos
+        </Typography>
+        {mobileVersion && <Box sx={{
+          position: 'absolute',
+          right: 10,
+          top: 65,
+        }}>
+          <ModalBase
+            labelToCallModal={
+              <Fab
+                size={desktopVersion ? 'large' : 'medium'}
+                sx={{ padding: 0 }}
+                color="primary"
+                aria-label="add">
+                <AddIcon sx={{ padding: 0 }} />
+              </Fab>}
+            titleModal='Adicionar Hábitos'>
+            <GroupForm />
+          </ModalBase>
+        </Box>}
+        <Stack display="flex" direction="row" padding=".8rem">
+          <ComponentButton sx={{ margin: ".2rem" }} variant="contained" size="small" onClick={backGroupPage}>Voltar</ComponentButton>
+          <ComponentButton sx={{ margin: ".2rem" }} variant="contained" size="small" onClick={nextGroupPage}>Avançar</ComponentButton>
+        </Stack>
+        <DivGroups
+          style={{
+            overflow: "auto",
+            height: desktopVersion ? '70vh' : '70vh',
+            width: desktopVersion ? '80%' : 'none',
+            // padding: '.2rem',
+          }}>
+          {groups.map((item) => (
+            <CardGroup
+              key={item.id}
+              group={item}
+              idCreator={item}
+              name={item.name}
+              id={item.id}
+              activities={item.activities}
+              users_on_group={item.users_on_group}
+              description={item.description}
+              category={item.category}
+              creatorId={item.creator.id}
+            />
+          ))}
+        </DivGroups>
+      </Box>
+      {desktopVersion && <Box sx={{
         position: 'absolute',
         right: 125,
         bottom: 8,
@@ -128,10 +128,10 @@ const HabitsAndGroups = () => {
                 <AddIcon />
               </Fab>}
             titleModal='Adicionar Hábitos'>
-            <GroupForm/>
+            <GroupForm />
           </ModalBase>
         </Stack>
-        </Box>}
+      </Box>}
     </Box>
   );
   return (
