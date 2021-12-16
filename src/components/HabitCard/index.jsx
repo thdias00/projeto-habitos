@@ -56,6 +56,7 @@ export default function HabitCard({ habit }) {
         <Stack direction="row" spacing={2} alignItems="center">
           {desktopVersion ? <CardActions>
             <Button
+              color="success"
               onClick={() => {
                 habitUpdate({
                   "achieved": true,
@@ -75,6 +76,7 @@ export default function HabitCard({ habit }) {
           {desktopVersion ?
             <CardActions>
               <Button
+                color="success"
                 size="small"
                 onClick={() => {
                   // console.log('habit id: ', habit.id)
@@ -90,6 +92,7 @@ export default function HabitCard({ habit }) {
             labelToCallModal={
               desktopVersion ? <CardActions>
                 <Button
+                  color="success"
                   size="small">
                   Atualizar
                 </Button>

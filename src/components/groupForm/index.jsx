@@ -3,6 +3,7 @@ import { useGroups } from "../../providers/groups";
 import { TextField, Stack, CardActions, Slider } from "@mui/material";
 import ComponentButton from "../Button";
 import { useAuth } from "../../providers/auth";
+
 export const GroupForm = ({ edit, id }) => {
   const { groupUpdate, groups, groupUpdated } = useGroups();
   const { user } = useAuth();
