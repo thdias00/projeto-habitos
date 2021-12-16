@@ -28,8 +28,6 @@ export const CardGroupButton = ({ id, creator }) => {
   } = useGroups();
   const { user } = useAuth();
 
-  console.log(myGroupsIds);
-
   return user.id === creator ? (
     <Box>
       <span> você é o criador desse grupo</span>

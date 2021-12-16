@@ -6,7 +6,6 @@ import { useAuth } from "../auth";
 export const GroupsContext = createContext();
 export const GroupsProvider = ({ children }) => {
   const [myGroupsIds, setMyGroupsIds] = useState([]);
-
   const [myGroups, setMyGroups] = useState([]);
   const [myCreatedGroups, setMyCreatedGroups] = useState([]);
   const [groups, setGroups] = useState([]);
@@ -28,7 +27,6 @@ export const GroupsProvider = ({ children }) => {
       .get(`/groups/?page=${page}`)
       .then((response) => {
         setGroups(response.data.results);
-        console.log("resposta da api", response.data);
       })
 
       .catch((error) => console.log(error));
@@ -74,6 +72,7 @@ export const GroupsProvider = ({ children }) => {
       .then(
         (_) => {
           getMyGroups();
+
           console.log("inscrito");
         }
         /*Add toast here*/
@@ -124,7 +123,7 @@ export const GroupsProvider = ({ children }) => {
       .then(_ => toast.success("Grupo criado com sucesso"))
       .catch(err => console.log(err));
   };
-  
+
   return (
     <GroupsContext.Provider
       value={{
