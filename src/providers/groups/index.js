@@ -75,7 +75,6 @@ export const GroupsProvider = ({ children }) => {
 
           toast.success("Você entrou no grupo");
         }
-        /*Add toast here*/
       )
       .catch((error) => console.log(error, "ERRO AO INSCREVER"));
   };
@@ -103,25 +102,24 @@ export const GroupsProvider = ({ children }) => {
       })
       .then((response) => {
         getMyGroups();
-        toast.success("grupo editado");
+        toast.success("Grupo editado");
 
         getSpecificGroup(habitId);
       })
       .catch((err) => {
-        toast.error("Error during update!");
+        toast.error("Erro ao editar!");
         console.log(err);
       });
   };
 
   const groupCreate = (obj) => {
-    api
-      .post(`/groups/`, obj, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((_) => toast.success("Grupo criado com sucesso"))
-      .catch((err) => console.log(err));
+    api.post(`/groups/`, obj, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(_ => toast.success("Grupo criado com sucesso"))
+      .catch(err => toast.error("Erro ao criar grupo"));
   };
 
   return (

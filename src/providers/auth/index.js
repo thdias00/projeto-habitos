@@ -23,12 +23,12 @@ export const AuthProvider = ({ children }) => {
     api
       .post("/users/", userData)
       .then((response) => {
-        toast.success("Success signing up");
+        toast.success("Cadastro realizado");
         reset();
         history.push("/login");
       })
       .catch((err) => {
-        toast.error("Error signing up");
+        toast.error("Usuário existente");
       });
   };
 
@@ -47,13 +47,13 @@ export const AuthProvider = ({ children }) => {
             setData({ token: access, user });
           })
           .catch((err) => {
-            toast.error("Error retrieving user details!");
+            toast.error("Erro ao recuperar detalhes do usuário!");
             console.log(err);
           });
         history.push("/dashboard");
       })
       .catch((err) => {
-        toast.error("Error during login!");
+        toast.error("Usuário ou senha inválidos!");
         console.log(err);
       });
   };
@@ -80,9 +80,6 @@ export const AuthProvider = ({ children }) => {
       .catch((err) => {
         toast.error("Nome de usuário já existente");
       })
-      .catch((err) => {
-        toast.error("Nome de usuário já existente");
-      });
   };
   const logout = () => {
     localStorage.removeItem("@happyhabits:token");
