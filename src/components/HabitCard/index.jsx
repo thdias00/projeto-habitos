@@ -27,7 +27,6 @@ export default function HabitCard({ habit }) {
     >
       <Card
         sx={{
-          // minWidth: 275,
           width: "100%",
           height: "100%",
         }}
@@ -42,7 +41,6 @@ export default function HabitCard({ habit }) {
             sx={{
               overflow: "hidden",
               textOverflow: "ellipsis",
-              // display: '-webkit-box',
               whiteSpace: "nowrap",
               display: "block",
               // width: '13ch',

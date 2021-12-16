@@ -57,9 +57,7 @@ export const GroupFormEdit = ({ edit, id }) => {
       <Stack direction="row" spacing={2}>
         {edit === "editGroup" ? (
           <CardActions>
-            <ComponentButton size="small" onClick={changeGroup}>
-              Atualizar
-            </ComponentButton>
+            <ComponentButton onClick={changeGroup}>Atualizar</ComponentButton>
           </CardActions>
         ) : (
           <CardActions>
