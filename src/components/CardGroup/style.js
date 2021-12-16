@@ -6,11 +6,10 @@ export const StyledContainer = styled.section`
   justify-content: center;
   p {
     width: 90%;
-    overflow: hidden,
-    textOverflow: ellipsis,
-     display: -webkit-box,
-    whiteSpace: "nowrap",
-    display: "block",
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     font-weight: 400;
     font-size: 1rem;
