@@ -147,7 +147,6 @@ const HabitsAndGroups = () => {
     <HabitsAndGroupsContainer>
       <Box
         sx={{
-          backdropFilter: desktopVersion ? `none` : `brightness(7)`,
           backgroundSize: `cover`,
         }}
       >

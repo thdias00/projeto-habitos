@@ -15,11 +15,7 @@ const FormLogin = () => {
     password: yup
       .string()
       .required('Senha obrigatória')
-      .min(8, 'Deve ter ao menos 8 caracteres')
-      .matches(/^(?=.*[a-z])/, "Deve ter ao menos uma letra minúscula")
-      .matches(/^(?=.*[A-Z])/, "Deve ter ao menos uma letra maiúscula")
-      .matches(/^(.*[0-9].*)/, "Deve ter ao menos um número")
-      .matches(/^.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?].*$/, "Deve ter ao menos um caracter especial"),
+      .min(6, 'Deve ter ao menos 6 caracteres'),
   })
 
   const {

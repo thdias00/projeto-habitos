@@ -19,7 +19,7 @@ const Groups = () => {
     const groups = JSON.parse(localStorage.getItem("@happyhabits:group")) || {};
 
     return (
-        <div>
+        <div style={{ overflow: "hidden" }}>
             <ThemeProvider theme={theme}>
                 <ResponsiveAppBar />
                 {mobileVersion ?
