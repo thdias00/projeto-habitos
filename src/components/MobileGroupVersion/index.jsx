@@ -60,9 +60,9 @@ export default function MobileGroupVersion() {
           setActivities(response.data.results);
         })
         .catch((err) => {
-          toast.error("Erro ao carregar atividades!");
+          toast.error("Erro ao recuperar atividades!");
         });
-  }, [setActivities, token, groups.group.ud]);
+  }, [setActivities, token, groups.group.id]);
   useEffect(() => {
     token !== "" &&
       api
@@ -75,7 +75,7 @@ export default function MobileGroupVersion() {
           setGoals(response.data.results);
         })
         .catch((err) => {
-          toast.error("Erro ao carregar metas");
+          toast.error("Erro ao recuperar metas");
         });
   }, [setGoals, token, groups.group.id]);
   useEffect(() => {
@@ -90,7 +90,7 @@ export default function MobileGroupVersion() {
           setUsers(response.data.users_on_group);
         })
         .catch((err) => {
-          toast.error("Erro ao carregar metas");
+          toast.error("Erro ao recuperar usuários");
         });
   }, [getMyGroups, token]);
 

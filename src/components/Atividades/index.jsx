@@ -37,7 +37,7 @@ const Activities = ({ groupId }) => {
           setActivities(response.data.results);
         })
         .catch((err) => {
-          toast.error("Error during activities retrieving!");
+          toast.error("Erro ao recuperar atividades");
         });
   }, [setActivities, token, groupId]);
 

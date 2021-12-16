@@ -59,9 +59,9 @@ const FormLogin = () => {
               justifyContent: "center",
               margin: '.8rem 0',
               width: '100%',
-                }}>
+            }}>
             <Input
-              color="success" 
+              color="success"
               sx={{
                 margin: '1rem 0',
                 width: '100%',
@@ -82,9 +82,9 @@ const FormLogin = () => {
               justifyContent: "center",
               margin: '.8rem 0',
               width: '100%',
-                }}>
+            }}>
             <Input
-              color="success" 
+              color="success"
               sx={{
                 margin: '1rem 0',
                 width: '100%',
@@ -99,7 +99,6 @@ const FormLogin = () => {
               margin="normal"
             />
           </Stack>
-          <LinkContainer className='highlight' to='/signup'>Esqueceu a senha?</LinkContainer>
           <div className='links'>Não tens conta? <LinkContainer to='/signup' className='highlight'>Crie aqui</LinkContainer></div>
           <ComponentButton color="success" variant='contained' sx={{ width: '50px' }} type='submit'>Login</ComponentButton>
         </Box>
