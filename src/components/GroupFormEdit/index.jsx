@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useGroups } from "../../providers/groups";
-import { TextField, Stack, CardActions, Slider } from "@mui/material";
+import { TextField, Stack, CardActions } from "@mui/material";
 import ComponentButton from "../Button";
 import { useAuth } from "../../providers/auth";
-export const GroupForm = ({ edit, id }) => {
-  const { groupUpdate, groups, groupUpdated } = useGroups();
+export const GroupFormEdit = ({ edit, id }) => {
+  const { groupUpdate, groupUpdated } = useGroups();
   const { user } = useAuth();
   const [name, setName] = useState(() => {
     return groupUpdated ? groupUpdated.name : "";

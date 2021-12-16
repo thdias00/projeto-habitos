@@ -2,7 +2,8 @@ import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import { Link } from "react-router-dom";
+import ComponentButton from "../Button";
+import { useHistory } from "react-router-dom";
 import { CardGroupButton } from "../../components/CardGroupButton/index";
 import { useAuth } from "../../providers/auth";
 export default function CardGroup({
@@ -18,6 +19,7 @@ export default function CardGroup({
     localStorage.removeItem("@happyhabits:group");
     localStorage.setItem("@happyhabits:group", JSON.stringify({ group }));
   }
+  const history = useHistory();
   return (
     <Card
       sx={{
@@ -31,20 +33,15 @@ export default function CardGroup({
           {name}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {category}
+          categoria: {category}
         </Typography>
-        <Typography variant="body2">{description}</Typography>
+        <Typography variant="body2">descrição: {description}</Typography>
       </CardContent>
       <CardActions>
         <CardGroupButton id={id} creator={creatorId} />
-        <Link
-          onClick={updateGroupOnLocalStorage}
-          size="small"
-          key={id}
-          to={`/groups/${id}`}
-        >
-          Ver grupo
-        </Link>
+        <ComponentButton onClick={() => history.push(`/groups/${id}`)}>
+          ver mais
+        </ComponentButton>
       </CardActions>
     </Card>
   );
