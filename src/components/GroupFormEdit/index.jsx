@@ -4,7 +4,7 @@ import { TextField, Stack, CardActions } from "@mui/material";
 import ComponentButton from "../Button";
 import { useAuth } from "../../providers/auth";
 export const GroupFormEdit = ({ edit, id }) => {
-  const { groupUpdate, groupUpdated } = useGroups();
+  const { groupUpdate, groupUpdated, groupCreate } = useGroups();
   const { user } = useAuth();
   const [name, setName] = useState(() => {
     return groupUpdated ? groupUpdated.name : "";
@@ -61,7 +61,7 @@ export const GroupFormEdit = ({ edit, id }) => {
           </CardActions>
         ) : (
           <CardActions>
-            <ComponentButton size="small">+</ComponentButton>
+            <ComponentButton size="small" onClick={() => { groupCreate({ name, description, category }) }}>Adicionar</ComponentButton>
           </CardActions>
         )}
       </Stack>
