@@ -11,19 +11,19 @@ export const GoalsProvider = ({ children }) => {
 
   const getGoals = (groupId) => {
     token !== '' &&
-    api.get(`/goals/?group=${groupId}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(response => {
-        setGoals(response.data.results);
+      api.get(`/goals/?group=${groupId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
       })
-      .catch(err => {
-        setGoals([]);
-        toast.error('Error during goal retrieving!');
-        console.log(err);
-      })
+        .then(response => {
+          setGoals(response.data.results);
+        })
+        .catch(err => {
+          setGoals([]);
+          toast.error('Erro ao recuperar metas!');
+          console.log(err);
+        })
   }
 
   const goalDelete = (goalId) => {
@@ -34,12 +34,12 @@ export const GoalsProvider = ({ children }) => {
       }
     })
       .then(response => {
-        toast.success('Success deleted!')
+        toast.success('Deletado com sucesso!')
         console.log(response);
         setGoals(goals.filter(el => el.id !== goalId));
       })
       .catch(err => {
-        toast.error('Error during exclusion!')
+        toast.error('Erro ao deletar!')
         console.log(err)
       })
   }
@@ -48,17 +48,17 @@ export const GoalsProvider = ({ children }) => {
     console.log("[goalCreate function] groupId: ", groupId);
     console.log("[goalCreate function] obj: ", obj);
     const token = localStorage.getItem("@happyhabits:token") || '';
-    api.post('/goals/', {...obj, "group": groupId}, {
+    api.post('/goals/', { ...obj, "group": groupId }, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     })
       .then(response => {
-        toast.success('Success goal created!');
+        toast.success('Meta criada com sucesso!');
         getGoals(groupId);
       })
       .catch(err => {
-        toast.error('Error during goal creation!');
+        toast.error('Meta já existente!');
         console.log(err);
       })
   }
@@ -71,7 +71,7 @@ export const GoalsProvider = ({ children }) => {
       }
     })
       .then(response => {
-        toast.success('Success updated!')
+        toast.success('Atualizado com sucesso!')
         console.log(response);
         setGoals([...goals.filter(el => el.id !== goalId), response.data]);
         console.log('goalId: ', goalId);
@@ -80,7 +80,7 @@ export const GoalsProvider = ({ children }) => {
         console.log('goals updated: ', goals);
       })
       .catch(err => {
-        toast.error('Error during update!')
+        toast.error('Erro ao atualizar')
         console.log(err)
       })
   }
@@ -89,10 +89,10 @@ export const GoalsProvider = ({ children }) => {
     <GoalsContext.Provider
       value={{
         goals,
-        setGoals, 
+        setGoals,
         goalCreate,
-        goalUpdate, 
-        goalDelete, 
+        goalUpdate,
+        goalDelete,
         getGoals
       }}
     >

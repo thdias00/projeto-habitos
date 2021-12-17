@@ -21,7 +21,7 @@ export const ActivitiesProvider = ({ children }) => {
                 })
                 .catch(err => {
                     setActivities([]);
-                    toast.error('Error during goal retrieving!');
+                    toast.error('Erro ao recuperar atividades!');
                 })
     }
 
@@ -33,11 +33,11 @@ export const ActivitiesProvider = ({ children }) => {
             }
         })
             .then(response => {
-                toast.success('Success deleted!')
+                toast.success('Deletado com sucesso!')
                 setActivities(activities.filter(el => el.id !== activitieId));
             })
             .catch(err => {
-                toast.error('Error during exclusion!')
+                toast.error('Erro ao deletar!')
             })
     }
     const activitieCreate = (data, groupId) => {
@@ -48,12 +48,12 @@ export const ActivitiesProvider = ({ children }) => {
             }
         })
             .then(response => {
-                toast.success('Success activitie created!');
+                toast.success('Atividade criada com sucesso!');
                 getActivities(groupId);
 
             })
             .catch(err => {
-                toast.error('Error during activitie creation!');
+                toast.error('Erro ao criar atividade!');
             })
     }
 

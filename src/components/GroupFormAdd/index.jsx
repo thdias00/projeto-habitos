@@ -7,13 +7,13 @@ import { useAuth } from "../../providers/auth";
 const GroupFormAdd = ({edit, group}) => {
   const { groupUpdate, groupCreate } = useGroups();
   const [name, setName] = useState(() => {
-    return group ? group.name : ''; 
+    return group ? group.name : "";
   });
   const [description, setDescription] = useState(() => {
-    return group ? group.description : ''; 
+    return group ? group.description : "";
   });
   const [category, setCategory] = useState(() => {
-    return group ? group.category : ''; 
+    return group ? group.category : "";
   });
   return (
     <>
@@ -56,7 +56,7 @@ const GroupFormAdd = ({edit, group}) => {
       </CardActions>}
     </Stack>
     </>
-  )
-}
+  );
+};
 
 export default GroupFormAdd

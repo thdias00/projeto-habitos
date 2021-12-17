@@ -1,8 +1,4 @@
 import styled from "styled-components";
-// import { useAuth } from "../../providers/auth";
-
-export const DivGroups = styled.div`
-`;
 
 export const HabitsAndGroupsContainer = styled.div`
   /* position: fixed; */
@@ -15,11 +11,6 @@ export const HabitsAndGroupsContainer = styled.div`
     @media (min-width: 768px) {
       display: none;
     }
-  }
-  .external-component {
-    background-color: #1B5E20;
-    /* height: 1500px; */
-    /* min-width: 300px; */
   }
 `
 
@@ -35,17 +26,17 @@ export const ContentContainer = styled.div`
     justify-content: center;
     min-height: calc(100vh - 68.5px - 49px);
   }
-  `
+`
+
 export const SideContainer = styled.div`
   padding: 1rem 2rem;
   background-color: #1B5E20;
-  /* max-width: 800px; */
   width: 40%;
-  /* min-width: 700px; */
+  max-height: 600px;
+  min-height: 600px;
   `
 
 export const UniqueContainer = styled.div`
   padding: 1rem;
-  /* background-color: yellow; */
   min-width: 100%;
 `

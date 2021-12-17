@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import api from "../../services/api";
 import jwt_decode from "jwt-decode";
 import toast from "react-hot-toast";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const AuthContext = createContext();
 
@@ -23,12 +23,12 @@ export const AuthProvider = ({ children }) => {
     api
       .post("/users/", userData)
       .then((response) => {
-        toast.success("Success signing up");
+        toast.success("Cadastro realizado");
         reset();
         history.push("/login");
       })
       .catch((err) => {
-        toast.error("Error signing up");
+        toast.error("Usuário existente");
       });
   };
 
@@ -40,20 +40,20 @@ export const AuthProvider = ({ children }) => {
         const { access } = response.data;
         localStorage.setItem("@happyhabits:token", access);
         api
-          .get(`/users/${userId}/`)
+          .get(`/users/${jwt_decode(response.data.access).user_id}/`)
           .then((response) => {
             const user = response.data;
             localStorage.setItem("@happyhabits:user", JSON.stringify(user));
             setData({ token: access, user });
           })
           .catch((err) => {
-            toast.error("Error retrieving user details!");
+            toast.error("Erro ao recuperar detalhes do usuário!");
             console.log(err);
           });
         history.push("/dashboard");
       })
       .catch((err) => {
-        toast.error("Error during login!");
+        toast.error("Usuário ou senha inválidos!");
         console.log(err);
       });
   };
@@ -76,9 +76,6 @@ export const AuthProvider = ({ children }) => {
           JSON.stringify(response.data)
         );
         setUser(JSON.parse(localStorage.getItem("@happyhabits:user")) || {});
-      })
-      .catch((err) => {
-        toast.error("Nome de usuário já existente");
       })
       .catch((err) => {
         toast.error("Nome de usuário já existente");
@@ -110,8 +107,8 @@ export const AuthProvider = ({ children }) => {
       .catch((error) => console.log(error));
   }, [page]);
 
-  const mobileVersion = useMediaQuery("(max-width:699px)")
-  const desktopVersion = useMediaQuery("(min-width:700px)")
+  const mobileVersion = useMediaQuery("(max-width:899px)");
+  const desktopVersion = useMediaQuery("(min-width:900px)");
 
   //Criando
   return (

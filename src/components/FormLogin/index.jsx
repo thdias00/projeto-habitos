@@ -15,11 +15,7 @@ const FormLogin = () => {
     password: yup
       .string()
       .required('Senha obrigatória')
-      .min(8, 'Deve ter ao menos 8 caracteres')
-      .matches(/^(?=.*[a-z])/, "Deve ter ao menos uma letra minúscula")
-      .matches(/^(?=.*[A-Z])/, "Deve ter ao menos uma letra maiúscula")
-      .matches(/^(.*[0-9].*)/, "Deve ter ao menos um número")
-      .matches(/^.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?].*$/, "Deve ter ao menos um caracter especial"),
+      .min(6, 'Deve ter ao menos 6 caracteres'),
   })
 
   const {
@@ -59,9 +55,9 @@ const FormLogin = () => {
               justifyContent: "center",
               margin: '.8rem 0',
               width: '100%',
-                }}>
+            }}>
             <Input
-              color="success" 
+              color="success"
               sx={{
                 margin: '1rem 0',
                 width: '100%',
@@ -82,9 +78,9 @@ const FormLogin = () => {
               justifyContent: "center",
               margin: '.8rem 0',
               width: '100%',
-                }}>
+            }}>
             <Input
-              color="success" 
+              color="success"
               sx={{
                 margin: '1rem 0',
                 width: '100%',
@@ -99,7 +95,6 @@ const FormLogin = () => {
               margin="normal"
             />
           </Stack>
-          <LinkContainer className='highlight' to='/signup'>Esqueceu a senha?</LinkContainer>
           <div className='links'>Não tens conta? <LinkContainer to='/signup' className='highlight'>Crie aqui</LinkContainer></div>
           <ComponentButton color="success" variant='contained' sx={{ width: '50px' }} type='submit'>Login</ComponentButton>
         </Box>

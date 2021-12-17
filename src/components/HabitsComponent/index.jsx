@@ -48,7 +48,7 @@ const HabitsComponent = () => {
       <HabitsComponentsContainer>
       <Box 
       sx={{
-        height: desktopVersion ? '65vh' : '77vh',
+        height: desktopVersion ? '476px' : '77vh',
         overflowY: 'scroll',
       }}>
         {habits.length === 0 ? 'Você não tem hábitos cadastrados. Clique para adicionar.' : habits.map(habit => <HabitCard key={habit.id} habit={habit} />)}

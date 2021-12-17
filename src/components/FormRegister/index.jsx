@@ -1,6 +1,6 @@
 // import { SignupContainer } from "./styles";
 import * as yup from 'yup';
-import { useForm} from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import ComponentButton from '../Button';
 import { FormRegisterContainer, LinkContainer } from './styles';
@@ -16,11 +16,7 @@ const FormRegister = () => {
     password: yup
       .string()
       .required('Senha obrigatória')
-      .min(8, 'Deve ter ao menos 8 caracteres')
-      .matches(/^(?=.*[a-z])/, "Deve ter ao menos uma letra minúscula")
-      .matches(/^(?=.*[A-Z])/, "Deve ter ao menos uma letra maiúscula")
-      .matches(/^(.*[0-9].*)/, "Deve ter ao menos um número")
-      .matches(/^.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?].*$/, "Deve ter ao menos um caracter especial"),
+      .min(6, 'Deve ter ao menos 6 caracteres'),
     password_conf: yup.string().required('Confirmação de senha obrigatória').test('passwords-match', 'Senhas diferentes!', function (value) { return this.parent.password === value })
   });
 
@@ -48,7 +44,7 @@ const FormRegister = () => {
       <div className='subtitle'>Preenche todo o formulário</div>
       <form onSubmit={handleSubmit(onSubmitFunction)}>
         <Input
-          color="success" 
+          color="success"
           variant="standard"
           type="text"
           label="Usuário"
@@ -58,7 +54,7 @@ const FormRegister = () => {
           register={register}
         />
         <Input
-          color="success" 
+          color="success"
           variant="standard"
           type="email"
           label="Email"
@@ -68,7 +64,7 @@ const FormRegister = () => {
           register={register}
         />
         <Input
-          color="success" 
+          color="success"
           variant="standard"
           type="password"
           label="Senha"
@@ -78,7 +74,7 @@ const FormRegister = () => {
           register={register}
         />
         <Input
-          color="success" 
+          color="success"
           variant="standard"
           type="password"
           label="Confirmar senha"
@@ -88,11 +84,11 @@ const FormRegister = () => {
           register={register}
         />
         <div className='links'>Já se cadastrou? <LinkContainer to='/login' className='highlight'>Faça o login</LinkContainer></div>
-        <ComponentButton 
+        <ComponentButton
           color="success"
           variant='contained'
-        type='submit'>
-        Signup</ComponentButton>
+          type='submit'>
+          Signup</ComponentButton>
       </form>
     </FormRegisterContainer>
   </>)
