@@ -24,7 +24,7 @@ import { useState } from "react";
 import ComponentButton from "../../components/Button";
 import AddIcon from "@mui/icons-material/Add";
 import ModalBase from "../../components/ModalBase";
-import {GroupFormEdit} from "../../components/GroupFormEdit";
+import { GroupFormEdit } from "../../components/GroupFormEdit";
 import GroupFormAdd from "../../components/GroupFormAdd";
 const RenderGroups = () => {
   // const { desktopVersion } = useColors();
@@ -38,7 +38,7 @@ const RenderGroups = () => {
         align="center"
         component="h1"
         variant="h5"
-        sx={{ color: desktopVersion ? "white" : "#418C40" }}
+        sx={{ color: desktopVersion ? "white" : "#418C40", background: mobileVersion && "white", marginBottom: mobileVersion && "5%", borderRadius: mobileVersion && "5px", padding: mobileVersion && "1rem" }}
       >
         Todos os Grupos
       </Typography>
@@ -55,8 +55,7 @@ const RenderGroups = () => {
             labelToCallModal={
               <Fab
                 size={desktopVersion ? "large" : "medium"}
-                sx={{ padding: 0 }}
-                color="primary"
+                sx={{ padding: 0, background: "#26C6DA" }}
                 aria-label="add"
               >
                 <AddIcon sx={{ padding: 0 }} />
@@ -106,19 +105,19 @@ const RenderGroups = () => {
       </DivGroups>
 
       {desktopVersion && (
-        
-          <Stack alignItems="flex-end">
-            <ModalBase
-              labelToCallModal={
-                <Fab color="success" aria-label="add">
-                  <AddIcon color='success'/>
-                </Fab>
-              }
-              titleModal="Adicionar Grupo"
-            >
-              <GroupFormEdit />
-            </ModalBase>
-          </Stack>
+
+        <Stack alignItems="flex-end">
+          <ModalBase
+            labelToCallModal={
+              <Fab sx={{ background: "#26C6DA" }} aria-label="add">
+                <AddIcon color='success' />
+              </Fab>
+            }
+            titleModal="Adicionar Grupo"
+          >
+            <GroupFormEdit />
+          </ModalBase>
+        </Stack>
       )}
 
     </RenderGroupsContainer>
