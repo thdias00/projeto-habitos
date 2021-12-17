@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
       .then((response) => {
         toast.success("Cadastro realizado");
         reset();
-        history.push("/login");
+        history.push("/");
       })
       .catch((err) => {
         toast.error("Usuário existente");
