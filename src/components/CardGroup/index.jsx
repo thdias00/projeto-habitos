@@ -14,6 +14,7 @@ export default function CardGroup({
   description,
   category,
   creatorId,
+  dashboard,
 }) {
   const { mobileVersion } = useAuth();
   function updateGroupOnLocalStorage() {
@@ -39,7 +40,7 @@ export default function CardGroup({
           <p>descrição: {description}</p>
         </CardContent>
         <CardActions>
-          <CardGroupButton id={id} creator={creatorId} />
+          <CardGroupButton id={id} creator={creatorId} dashboard={dashboard} />
           <ComponentButton color='success'
             sx={{ width: "75px", padding: "0" }}
             onClick={updateGroupOnLocalStorage}

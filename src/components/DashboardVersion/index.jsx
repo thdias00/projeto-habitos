@@ -68,15 +68,6 @@ export default function DashboardVersion() {
                                     <li key={`section-${element}`}>
                                         <ul>
                                             <ListSubheader>{element.title}</ListSubheader>
-                                            <ListItem sx={{ justifyContent: "center" }}>
-                                                <Button
-                                                    size="small"
-                                                    onClick={() => {
-                                                        activitieDelete(element.id);
-                                                    }}>
-                                                    <DeleteForeverIcon />
-                                                </Button>
-                                            </ListItem>
                                             <hr />
                                         </ul>
                                     </li>
@@ -151,15 +142,6 @@ export default function DashboardVersion() {
                                         <li key={`section-${element}`}>
                                             <ul>
                                                 <ListSubheader>{element.title}</ListSubheader>
-                                                <ListItem sx={{ justifyContent: "center" }}>
-                                                    <Button
-                                                        size="small"
-                                                        onClick={() => {
-                                                            activitieDelete(element.id);
-                                                        }}>
-                                                        <DeleteForeverIcon />
-                                                    </Button>
-                                                </ListItem>
                                                 <hr />
                                             </ul>
                                         </li>
@@ -191,6 +173,7 @@ export default function DashboardVersion() {
                                 description={item.description}
                                 category={item.category}
                                 creatorId={item.creator.id}
+                                dashboard={true}
                             />
                         )}
                     </Box>
