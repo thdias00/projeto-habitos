@@ -30,14 +30,14 @@ const GoalsComponent = ({ groupId }) => {
   return (<>
     <Box
       sx={{
-        height: '100%',
+        height: '84%',
         overFlowY: 'scroll',
         width: '80%',
         margin: 'auto',
       }}>
       <Box
         sx={{
-          height: '75vh',
+          height: '90%',
           overflowY: 'scroll',
         }}>
         {goals.length === 0 ?
@@ -48,7 +48,7 @@ const GoalsComponent = ({ groupId }) => {
         alignItems="flex-end">
         <ModalBase
           labelToCallModal={
-            <Fab color="primary" aria-label="add">
+            <Fab sx={{ background: "#26C6DA" }} aria-label="add">
               <AddIcon />
             </Fab>}
           titleModal='Adicionar Meta'>

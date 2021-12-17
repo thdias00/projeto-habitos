@@ -32,7 +32,7 @@ const Groups = () => {
                                 sx={{
                                     padding: "1rem",
                                     margin: "2rem",
-                                    height: "90vh",
+                                    height: "86vh",
                                     backgroundColor: "#1B5E20",
                                 }}
                             >
@@ -69,7 +69,7 @@ const Groups = () => {
                                 sx={{
                                     padding: "1rem",
                                     margin: "2rem",
-                                    height: "90vh",
+                                    height: "86vh",
                                     backgroundColor: "#1B5E20",
                                 }}
                             >
