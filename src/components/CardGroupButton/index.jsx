@@ -26,11 +26,11 @@ export const CardGroupButton = ({ id, creator }) => {
   ) : (
     <Box>
       {myGroupsIds.includes(id) ? (
-        <ComponentButton size="small" onClick={() => unsubscribe(id)}>
+        <ComponentButton color='success' size="small" onClick={() => unsubscribe(id)}>
           sair
         </ComponentButton>
       ) : (
-        <ComponentButton size="small" onClick={() => subscribe(id)}>
+        <ComponentButton color='success' size="small" onClick={() => subscribe(id)}>
           entrar
         </ComponentButton>
       )}

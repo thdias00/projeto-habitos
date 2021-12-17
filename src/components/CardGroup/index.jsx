@@ -40,7 +40,7 @@ export default function CardGroup({
         </CardContent>
         <CardActions>
           <CardGroupButton id={id} creator={creatorId} />
-          <ComponentButton
+          <ComponentButton color='success'
             sx={{ width: "75px", padding: "0" }}
             onClick={updateGroupOnLocalStorage}
           >

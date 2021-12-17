@@ -43,9 +43,6 @@ export default function HabitCard({ habit }) {
               textOverflow: "ellipsis",
               whiteSpace: "nowrap",
               display: "block",
-              // width: '13ch',
-              // webkitLineClamp: 2,
-              // webkitBoxOrient: 'vertical',
             }}
           >
             {habit.title}
@@ -63,7 +60,7 @@ export default function HabitCard({ habit }) {
         <Stack direction="row" spacing={2} alignItems="center">
           {desktopVersion ? (
             <CardActions>
-              <Button
+              <Button color='success'
                 onClick={() => {
                   habitUpdate(
                     {
@@ -95,6 +92,7 @@ export default function HabitCard({ habit }) {
           {desktopVersion ? (
             <CardActions>
               <Button
+                color="success"
                 size="small"
                 onClick={() => {
                   // console.log('habit id: ', habit.id)
@@ -115,7 +113,7 @@ export default function HabitCard({ habit }) {
             labelToCallModal={
               desktopVersion ? (
                 <CardActions>
-                  <Button size="small">Atualizar</Button>
+                  <Button color='success' size="small">Atualizar</Button>
                 </CardActions>
               ) : (
                 <EditIcon sx={{ color: "black" }} />

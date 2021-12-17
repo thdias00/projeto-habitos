@@ -1,7 +1,7 @@
 import { HabitsComponentsContainer } from "./styles";
 import { useHabits } from "../../providers/habits";
 import HabitCard from "../HabitCard";
-import { Fab, Box, Stack } from '@mui/material';
+import { Fab, Box, Stack, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import ModalBase from "../ModalBase";
 import HabitForm from "../HabitForm";
@@ -14,11 +14,19 @@ const HabitsComponent = () => {
   return (
     <Box
       sx={{
-        height: '100%',
-        overFlowY: 'scroll',
-        width: desktopVersion ? '80%' : '95%',
+        // height: '100%',
+        // overFlowY: 'scroll',
+        // width: desktopVersion ? '80%' : '95%',
         margin: 'auto',
       }}>
+      <Typography
+        padding=".2rem 0 .6rem 0"
+        align="center"
+        component="h1"
+        variant="h5"
+        sx={{ color: desktopVersion ? 'white' : '#418C40' }}>
+        Meus Hábitos
+      </Typography>
       {mobileVersion && <Box sx={{
         position: 'absolute',
         right: 10,
@@ -29,9 +37,9 @@ const HabitsComponent = () => {
             <Fab
               size={desktopVersion ? 'large' : 'medium'}
               sx={{ padding: 0 }}
-              color="primary"
+              color="success"
               aria-label="add">
-              <AddIcon sx={{padding: 0}}/>
+              <AddIcon color="success" sx={{padding: 0}}/>
             </Fab>}
           titleModal='Adicionar Hábitos'>
           <HabitForm/>
@@ -40,7 +48,7 @@ const HabitsComponent = () => {
       <HabitsComponentsContainer>
       <Box 
       sx={{
-        height: desktopVersion ? '75vh' : '81vh',
+        height: desktopVersion ? '476px' : '77vh',
         overflowY: 'scroll',
       }}>
         {habits.length === 0 ? 'Você não tem hábitos cadastrados. Clique para adicionar.' : habits.map(habit => <HabitCard key={habit.id} habit={habit} />)}
@@ -49,8 +57,8 @@ const HabitsComponent = () => {
           alignItems="flex-end">
           <ModalBase
             labelToCallModal={
-              <Fab color="primary" aria-label="add">
-                <AddIcon />
+              <Fab color="success" aria-label="add">
+                <AddIcon color="success"/>
               </Fab>}
             titleModal='Adicionar Hábitos'>
             <HabitForm/>
