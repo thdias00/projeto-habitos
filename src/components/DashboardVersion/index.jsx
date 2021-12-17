@@ -95,6 +95,7 @@ export default function DashboardVersion() {
                                             description={item.description}
                                             category={item.category}
                                             creatorId={item.creator.id}
+                                            dashboard={true}
                                         />
                                     )}
                                 </Box>
