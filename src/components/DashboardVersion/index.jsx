@@ -69,13 +69,13 @@ export default function DashboardVersion() {
                                         <ul>
                                             <ListSubheader>{element.title}</ListSubheader>
                                             <ListItem sx={{ justifyContent: "center" }}>
-                                                <Button
+                                                {/* <Button
                                                     size="small"
                                                     onClick={() => {
                                                         activitieDelete(element.id);
                                                     }}>
                                                     <DeleteForeverIcon />
-                                                </Button>
+                                                </Button> */}
                                             </ListItem>
                                             <hr />
                                         </ul>
@@ -104,6 +104,7 @@ export default function DashboardVersion() {
                                             description={item.description}
                                             category={item.category}
                                             creatorId={item.creator.id}
+                                            dashboard={true}
                                         />
                                     )}
                                 </Box>
@@ -152,13 +153,13 @@ export default function DashboardVersion() {
                                             <ul>
                                                 <ListSubheader>{element.title}</ListSubheader>
                                                 <ListItem sx={{ justifyContent: "center" }}>
-                                                    <Button
+                                                    {/* <Button
                                                         size="small"
                                                         onClick={() => {
                                                             activitieDelete(element.id);
                                                         }}>
                                                         <DeleteForeverIcon />
-                                                    </Button>
+                                                    </Button> */}
                                                 </ListItem>
                                                 <hr />
                                             </ul>

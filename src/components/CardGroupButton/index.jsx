@@ -12,7 +12,7 @@ import { Box } from "@mui/material";
 import { useAuth } from "../../providers/auth";
 import { GroupFormEdit } from "../GroupFormEdit";
 import ModalBase from "../ModalBase";
-export const CardGroupButton = ({ id, creator }) => {
+export const CardGroupButton = ({ id, creator, dashboard }) => {
   const { subscribe, unsubscribe, myGroupsIds } = useGroups();
   const { user } = useAuth();
 
@@ -25,7 +25,7 @@ export const CardGroupButton = ({ id, creator }) => {
     </Box>
   ) : (
     <Box>
-      {myGroupsIds.includes(id) ? (
+      {myGroupsIds.includes(id) && !dashboard ? (
         <ComponentButton color='success' size="small" onClick={() => unsubscribe(id)}>
           sair
         </ComponentButton>
