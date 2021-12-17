@@ -1,28 +1,15 @@
 import {
-  Grid,
-  Box,
-  Typography,
   Paper,
   BottomNavigation,
   BottomNavigationAction,
-  Stack,
-  Fab,
 } from "@mui/material";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import GroupIcon from "@mui/icons-material/Group";
 import ResponsiveAppBar from "../../components/Header";
 import HabitsComponent from "../../components/HabitsComponent";
-import { ContentContainer, DivGroups, HabitsAndGroupsContainer, SideContainer, UniqueContainer } from "./style";
-import Grid6 from "../../components/Grids/Grid6";
-import { useGroups } from "../../providers/groups";
-import { useAuth } from "../../providers/auth";
+import { ContentContainer, HabitsAndGroupsContainer, SideContainer, UniqueContainer } from "./style";
 import { useState } from "react";
-import ComponentButton from "../../components/Button";
-import AddIcon from "@mui/icons-material/Add";
-import ModalBase from "../../components/ModalBase";
-import GroupFormEdit from "../../components/GroupFormEdit";
 import RenderGroups from "../../components/RenderGroups";
-import GroupFormAdd from "../../components/GroupFormAdd";
 
 const HabitsAndGroups = () => {
   const [navOption, setNavOption] = useState(0);

@@ -5,17 +5,21 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import { LinkContainer } from './styles';
 import CircularProgressWithLabel from '../CircularProgressWithLabel';
+import { useAuth } from "../../providers/auth";
 
 const DashboardCardHabits = () => {
   const { habits } = useHabits();
+  const { mobileVersion } = useAuth();
+
   return (<>
-    <Stack>
-      <Paper
+    <Stack sx={{
+      width: mobileVersion ? "100%" : "50%",
+    }}>
+      < Paper
         elevation={4}
         sx={{
           padding: '1rem',
-          width: 300,
-          height: 140,
+          width: "100%",
           backgroundColor: 'white'
         }}>
         <Stack
@@ -24,7 +28,7 @@ const DashboardCardHabits = () => {
           alignItems="center">
           <Box>
             <Box>
-              <Typography  component="div" color="text.secondary">
+              <Typography component="div" color="text.secondary">
                 <Stack
                   direction="row"
                   justifyContent="flex-start"
@@ -43,16 +47,16 @@ const DashboardCardHabits = () => {
               <Stack color="text.secondary" alignItems="center">
                 <ErrorOutlineIcon />
                 <Typography component="div">
-                  "Dados não disponíveis" 
+                  "Dados não disponíveis"
                 </Typography>
               </Stack> :
               <Box>
                 <Typography component="span" sx={{
                   fontWeight: 900,
                   fontSize: '24px',
-                  }}>
-                    {habits.filter(el => el.achieved === true).length}
-                  </Typography>
+                }}>
+                  {habits.filter(el => el.achieved === true).length}
+                </Typography>
                 <Typography component="span" color="text.secondary">
                   /{habits.length} hábitos completados
                 </Typography>
@@ -61,7 +65,7 @@ const DashboardCardHabits = () => {
                   justifyContent="space-around"
                   alignItems="center">
                   <CircularProgressWithLabel
-                  value={Math.round(habits.reduce((acc, val) => acc + val.how_much_achieved, 0)/habits.length)}
+                    value={Math.round(habits.reduce((acc, val) => acc + val.how_much_achieved, 0) / habits.length)}
                   />
                   <Typography color="text.secondary">
                     &nbsp; total hábitos atingidos
@@ -76,7 +80,7 @@ const DashboardCardHabits = () => {
           </LinkContainer>
         </Stack>
       </Paper>
-    </Stack>
+    </Stack >
   </>)
 }
 
