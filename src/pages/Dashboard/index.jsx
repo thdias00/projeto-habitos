@@ -1,6 +1,6 @@
 import ResponsiveAppBar from "../../components/Header";
-import DashboardCardHabits from "../../components/DashboardCardHabits";
 import { Box } from "@mui/material";
+import DashboardVersion from "../../components/DashboardVersion";
 
 const Dashboard = () => {
   return (
@@ -14,7 +14,7 @@ const Dashboard = () => {
           backgroundColor: "#1B5E20",
         }}
       >
-        <DashboardCardHabits />
+        <DashboardVersion />
       </Box>
     </div>
   );
