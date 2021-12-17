@@ -91,7 +91,7 @@ export default function DashboardVersion() {
                                     variant="h5">
                                     Seus Grupos
                                 </Typography>
-                                <Box sx={{ height: "53%", overflow-y: "scroll" }}>
+                                <Box sx={{ height: "53%", overflowY: "scroll" }}>
                                     {groups.map((item) =>
                                         <CardGroup
                                             key={item.id}
@@ -178,7 +178,7 @@ export default function DashboardVersion() {
                         variant="h5">
                         Seus Grupos
                     </Typography>
-                    <Box sx={{ height: "82%", overflow-y: "scroll" }}>
+                    <Box sx={{ height: "82%", overflowY: "scroll" }}>
                         {groups.map((item) =>
                             <CardGroup
                                 key={item.id}
