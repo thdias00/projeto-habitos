@@ -83,7 +83,7 @@ const FormRegister = () => {
           name="password_conf"
           register={register}
         />
-        <div className='links'>Já se cadastrou? <LinkContainer to='/login' className='highlight'>Faça o login</LinkContainer></div>
+        <div className='links'>Já se cadastrou? <LinkContainer to='/' className='highlight'>Faça o login</LinkContainer></div>
         <ComponentButton
           color="success"
           variant='contained'

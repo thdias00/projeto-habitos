@@ -24,7 +24,7 @@ const HabitsComponent = () => {
         align="center"
         component="h1"
         variant="h5"
-        sx={{ color: desktopVersion ? 'white' : '#418C40' }}>
+        sx={{ color: desktopVersion ? 'white' : '#418C40', background: mobileVersion && "white", marginBottom: mobileVersion && "5%", borderRadius: mobileVersion && "5px", padding: mobileVersion && "1rem" }}>
         Meus Hábitos
       </Typography>
       {mobileVersion && <Box sx={{
@@ -36,32 +36,31 @@ const HabitsComponent = () => {
           labelToCallModal={
             <Fab
               size={desktopVersion ? 'large' : 'medium'}
-              sx={{ padding: 0 }}
-              color="success"
+              sx={{ padding: 0, background: "#26C6DA" }}
               aria-label="add">
-              <AddIcon color="success" sx={{padding: 0}}/>
+              <AddIcon sx={{ padding: 0 }} />
             </Fab>}
           titleModal='Adicionar Hábitos'>
-          <HabitForm/>
-          </ModalBase>
+          <HabitForm />
+        </ModalBase>
       </Box>}
       <HabitsComponentsContainer>
-      <Box 
-      sx={{
-        height: desktopVersion ? '476px' : '77vh',
-        overflowY: 'scroll',
-      }}>
-        {habits.length === 0 ? 'Você não tem hábitos cadastrados. Clique para adicionar.' : habits.map(habit => <HabitCard key={habit.id} habit={habit} />)}
-      </Box>
+        <Box
+          sx={{
+            height: desktopVersion ? '476px' : '77vh',
+            overflowY: 'scroll',
+          }}>
+          {habits.length === 0 ? 'Você não tem hábitos cadastrados. Clique para adicionar.' : habits.map(habit => <HabitCard key={habit.id} habit={habit} />)}
+        </Box>
         {desktopVersion && <Stack
           alignItems="flex-end">
           <ModalBase
             labelToCallModal={
-              <Fab color="success" aria-label="add">
-                <AddIcon color="success"/>
+              <Fab sx={{ background: "#26C6DA" }} aria-label="add">
+                <AddIcon />
               </Fab>}
             titleModal='Adicionar Hábitos'>
-            <HabitForm/>
+            <HabitForm />
           </ModalBase>
         </Stack>}
       </HabitsComponentsContainer>
