@@ -10,9 +10,12 @@ export const GroupsProvider = ({ children }) => {
   const [myCreatedGroups, setMyCreatedGroups] = useState([]);
   const [groups, setGroups] = useState([]);
   const [page, setPage] = useState(1);
+  const [maxPage, setMaxPage] = useState();
 
   const nextGroupPage = () => {
-    setPage(page + 1);
+    if (page <= maxPage) {
+      setPage(page + 1);
+    }
   };
   const backGroupPage = () => {
     if (page > 1) {
@@ -32,6 +35,15 @@ export const GroupsProvider = ({ children }) => {
       .catch((error) => console.log(error));
   }, [page, user.id, myGroupsIds]);
 
+  useEffect(() => {
+    api
+      .get(`/groups/`)
+      .then((response) => {
+        setMaxPage(parseInt(response.data.count / 15));
+      })
+
+      .catch((error) => console.log(error));
+  }, [page, user.id, myGroupsIds]);
   const getMyGroups = () => {
     api
       .get("/groups/subscriptions/", {
@@ -69,13 +81,11 @@ export const GroupsProvider = ({ children }) => {
           },
         }
       )
-      .then(
-        (_) => {
-          getMyGroups();
+      .then((_) => {
+        getMyGroups();
 
-          toast.success("Você entrou no grupo");
-        }
-      )
+        toast.success("Você entrou no grupo");
+      })
       .catch((error) => console.log(error, "ERRO AO INSCREVER"));
   };
 
@@ -113,13 +123,14 @@ export const GroupsProvider = ({ children }) => {
   };
 
   const groupCreate = (obj) => {
-    api.post(`/groups/`, obj, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    })
-      .then(_ => toast.success("Grupo criado com sucesso"))
-      .catch(err => toast.error("Erro ao criar grupo"));
+    api
+      .post(`/groups/`, obj, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((_) => toast.success("Grupo criado com sucesso"))
+      .catch((err) => toast.error("Erro ao criar grupo"));
   };
 
   return (
