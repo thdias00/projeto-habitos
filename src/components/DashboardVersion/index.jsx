@@ -49,7 +49,7 @@ export default function DashboardVersion() {
                                     align="center"
                                     component="h1"
                                     variant="h5">
-                                    Suas Atividades
+                                    Minhas Atividades
                                 </Typography>
                             </Box>
                             <List
@@ -89,7 +89,7 @@ export default function DashboardVersion() {
                                     align="center"
                                     component="h1"
                                     variant="h5">
-                                    Seus Grupos
+                                    Meus Grupos
                                 </Typography>
                                 <Box sx={{ height: "53%", overflowY: "scroll" }}>
                                     {groups.map((item) =>
@@ -132,7 +132,7 @@ export default function DashboardVersion() {
                                         align="center"
                                         component="h1"
                                         variant="h5">
-                                        Suas Atividades
+                                        Minhas Atividades
                                     </Typography>
                                 </Box>
                                 <List
@@ -176,7 +176,7 @@ export default function DashboardVersion() {
                         align="center"
                         component="h1"
                         variant="h5">
-                        Seus Grupos
+                        Meus Grupos
                     </Typography>
                     <Box sx={{ height: "82%", overflowY: "scroll" }}>
                         {groups.map((item) =>
