@@ -44,7 +44,7 @@ const HabitsAndGroups = () => {
         align="center"
         component="h1"
         variant="h5"
-        sx={{ color: desktopVersion ? "white" : "#418C40" }}
+        sx={{ color: desktopVersion ? "white" : "#418C40", background: mobileVersion && "#ffffff", padding: mobileVersion && "2rem", borderRadius: mobileVersion && "5px", margin: mobileVersion && "1rem" }}
       >
         Meus Hábitos
       </Typography>
@@ -71,7 +71,7 @@ const HabitsAndGroups = () => {
           align="center"
           component="h1"
           variant="h5"
-          sx={{ color: desktopVersion ? "white" : "#418C40" }}
+          sx={{ color: desktopVersion ? "white" : "#418C40", background: mobileVersion && "#ffffff", borderRadius: mobileVersion && "5px", padding: mobileVersion && "2rem" }}
         >
           Todos os Grupos
         </Typography>
